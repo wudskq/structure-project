@@ -7,7 +7,7 @@ import lombok.ToString;
  * @author chenfangchao
  * @version 1.0.0
  * @ClassName Queue.java
- * @Description TODO 数组实现队列
+ * @Description TODO 数组实现队列 array implements queue
  * @createTime 2021年11月25日 23:53:00
  */
 @Data
