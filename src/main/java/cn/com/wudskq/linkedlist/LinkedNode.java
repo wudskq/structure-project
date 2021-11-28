@@ -13,7 +13,6 @@ import lombok.ToString;
  * @createTime 2021年11月28日 20:58:00
  */
 @Data
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class LinkedNode {
@@ -21,4 +20,11 @@ public class LinkedNode {
     private String name;
     private LinkedNode next;
 
+    @Override
+    public String toString() {
+        return "LinkedNode{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
