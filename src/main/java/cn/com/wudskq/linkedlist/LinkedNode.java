@@ -16,7 +16,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LinkedNode {
-    private Integer id;
+    private int id;
     private String name;
     private LinkedNode next;
 
