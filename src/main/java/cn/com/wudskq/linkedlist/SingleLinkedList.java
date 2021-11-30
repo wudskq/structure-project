@@ -12,12 +12,12 @@ public class SingleLinkedList {
 
 
     /* 初始化一个头部节点 */
-    private LinkedNode headNode = new LinkedNode(0, "头部节点", null);
+    private SingleLinkedNode headNode = new SingleLinkedNode(0, "头部节点", null);
 
     /* 单向链表添加节点 */
-    public void addNode(LinkedNode node) {
+    public void addNode(SingleLinkedNode node) {
         /* 因为头部节点不能动 就需要一个临时指针用来进行辅助操作 */
-        LinkedNode temp = headNode;
+        SingleLinkedNode temp = headNode;
         /* 遍历链表 找到最后一个节点 将最后一节点的next指针指向新添加的节点 */
         while (true) {
             /* 代表找到了最后 */
@@ -31,9 +31,9 @@ public class SingleLinkedList {
     }
 
     /* 单向链表添加节点 有自动排序功能 */
-    public void addNodeByOrder(LinkedNode node) {
+    public void addNodeByOrder(SingleLinkedNode node) {
         /* 获取头部节点指针 */
-        LinkedNode temp = headNode;
+        SingleLinkedNode temp = headNode;
         /* 标识位 添加的编号是否存在 默认为false */
         boolean flag = false;
         while (true) {
@@ -68,9 +68,9 @@ public class SingleLinkedList {
      *
      * @param node
      */
-    public void updateNode(LinkedNode node) {
+    public void updateNode(SingleLinkedNode node) {
         isEmpty();
-        LinkedNode temp = headNode;
+        SingleLinkedNode temp = headNode;
         boolean flag = false;
         while (true) {
             /* 说明已经遍历完链表 */
@@ -96,7 +96,7 @@ public class SingleLinkedList {
     /* 单向链表删除节点 */
     public void removeNode(int index) {
         isEmpty();
-        LinkedNode temp = headNode;
+        SingleLinkedNode temp = headNode;
         boolean flag = false;
         while (true) {
             /* 该链表已经遍历完 */
@@ -122,7 +122,7 @@ public class SingleLinkedList {
     /* 遍历单向链表 */
     public void listLinkedList() {
         /* 获取头部节点的next指针 */
-        LinkedNode temp = headNode.getNext();
+        SingleLinkedNode temp = headNode.getNext();
         /* 判断是否为空 */
         if (!isEmpty()) {
             while (true) {
@@ -140,7 +140,7 @@ public class SingleLinkedList {
 
     /* 判断链表是否为空 */
     public boolean isEmpty() {
-        LinkedNode next = headNode.getNext();
+        SingleLinkedNode next = headNode.getNext();
         if (null == next) {
             throw new RuntimeException("linkedList is empty!");
         } else {
