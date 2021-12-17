@@ -1,4 +1,4 @@
-package cn.com.wudskq.queue;
+package cn.com.wudskq.structure.queue;
 
 import lombok.Data;
 import lombok.ToString;

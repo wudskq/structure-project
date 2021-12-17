@@ -1,4 +1,4 @@
-package cn.com.wudskq.stack;
+package cn.com.wudskq.structure.stack;
 
 import lombok.Data;
 

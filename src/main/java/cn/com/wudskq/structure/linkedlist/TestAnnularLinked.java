@@ -1,4 +1,4 @@
-package cn.com.wudskq.linkedlist;
+package cn.com.wudskq.structure.linkedlist;
 
 /**
  * @author chenfangchao

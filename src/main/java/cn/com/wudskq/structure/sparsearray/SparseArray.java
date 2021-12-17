@@ -1,4 +1,4 @@
-package cn.com.wudskq.sparsearray;
+package cn.com.wudskq.structure.sparsearray;
 
 /**
  * @author chenfangchao

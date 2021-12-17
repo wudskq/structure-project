@@ -1,6 +1,6 @@
-package cn.com.wudskq.stack;
+package cn.com.wudskq.structure.stack;
 
-import cn.com.wudskq.linkedlist.DoubleLinkedNode;
+import cn.com.wudskq.structure.linkedlist.DoubleLinkedNode;
 
 /**
  * @author chenfangchao
