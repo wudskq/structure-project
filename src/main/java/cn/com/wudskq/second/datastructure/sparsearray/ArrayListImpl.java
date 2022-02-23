@@ -5,7 +5,7 @@ import cn.com.wudskq.utils.Conn;
 import java.sql.SQLException;
 
 /**
- * @author chenfangchao
+ * @author chenfangcåhaoå
  * @version 1.0.0
  * @ClassName ArrayListImpl.java
  * @Description TODO 数组实现五子棋功能
@@ -37,7 +37,7 @@ public class ArrayListImpl {
         }
     }
 
-    //执行下棋操作
+    //执行下棋操作 白棋为0,黑棋为1
     private static void handlePlayChess(int[][] array,int row,int column,int data){
         array[row][column] = data;
     }
