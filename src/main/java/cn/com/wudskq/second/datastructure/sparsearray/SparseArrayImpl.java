@@ -8,7 +8,7 @@ package cn.com.wudskq.second.datastructure.sparsearray;
  * @createTime 2022年02月25日 00:24:00
  */
 
-public class sparseArrayImpl {
+public class SparseArrayImpl {
 
     //声明数组 棋盘大小
     private static int[][] array = new int[13][13];
