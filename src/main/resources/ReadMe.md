@@ -21,7 +21,7 @@
 
 ### 3.数据结构
 
-#### 3.1 数组(稀疏数组)及应用场景
+#### 3.1 数组(二维数组)及应用场景
 
 - 场景介绍: 有一盘五子棋,需要使用计算机程序实现五子棋白旗黑棋功能,并实现存盘,续盘功能,利用合适的数据结构进行实现并尽可能做到内存占用最小
 
@@ -71,4 +71,96 @@
           }
       }
   ```
+
+#### 3.2数组(稀疏数组)
+
+- 场景依然是3.1五子棋盘场景,要求用最小的内存或存储空间实现五子棋盘的存盘/读盘功能
+
+- 稀疏数组定义: 稀疏数组依然是一个二维数组,只不过是一个特殊的二维数组,该数组第一行存储普通二维数组的大小(即就是二维数组的行高,列宽,有效数的个数),从第二行开始存储改有效数据的位置
+
+- 结构图解
+
+  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220225003819.png" alt="image-20220225003813852" style="zoom:50%;" />
+
+- 稀疏数组重点: 稀疏数组最重要的结构是为三列,除过第一行外,第一列存储行坐标,第二列存储列坐标,第三列存储数据
+
+- 初始化: 遍历原始二维数据,找到有效值个数,及行高,列宽,
+
+  ```java
+   /**
+       * 遍历原始数组,计算有效值并初始化稀疏数组;
+       * @param array 数组
+       */
+      private static int[][] initArray(int[][] array){
+          //计数器
+          int count = 0;
+          int row = 0,column =0;
+          for (int i = 0; i < array.length; i++) {
+               row = array.length;
+               column = array[i].length;
+              for (int j = 0; j < array[i].length; j++) {
+                  int item = array[i][j];
+                  if(item != 0){
+                      count++;
+                  }
+              }
+          }
+          //初始化稀疏数组,有效值个数+1为行高
+          int[][] sparseArray = new int[count+1][3];
+          sparseArray[0][0] = row;
+          sparseArray[0][1] = column;
+          sparseArray[0][2] = count;
+          return sparseArray;
+      }
+  ```
+
+- 存盘:遍历原始二维数组,判断有效值,并从第二行开始存入稀疏数组
+
+  ```java
+    //存盘操作
+      private static void saveChess(int[][] array,int[][] sparseArray){
+          //计数器
+          int count = 0;
+          for (int i = 0; i < array.length; i++) {
+              for (int j = 0; j < array[i].length; j++) {
+                  int item = array[i][j];
+                  //判断有效值
+                  if(item != 0){
+                      count ++;
+                      //列的功能不变
+                      sparseArray[count][0] = i;
+                      sparseArray[count][1] = j;
+                      sparseArray[count][2] = item;
+                  }
+              }
+          }
+      }
+  ```
+
+- 读盘: 取出稀疏数组第一行数据,进行初始化二维数组,接着从第二行开始遍历稀疏数组,进行有效值的填充
+
+  ```java
+   //读盘
+      private static int[][] queryChess(int[][] sparseArray){
+          //取出稀疏数组第一行数据,进行初始化二维数组
+          int row = sparseArray[0][0];
+          int column = sparseArray[0][1];
+          int [][] array = new int[row][column];
+          for (int i = 0; i < sparseArray.length-1; i++) {
+              for (int j = 0; j< sparseArray[i].length-1 ; j++) {
+                  int rowId = sparseArray[i + 1][0];
+                  int columnId = sparseArray[i + 1][1];
+                  int data = sparseArray[i + 1][2];
+                  array[rowId][columnId] = data;
+              }
+          }
+          return  array;
+      }
+  ```
+
+  
+
+
+
+
 
