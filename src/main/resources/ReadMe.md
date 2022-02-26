@@ -158,7 +158,138 @@
       }
   ```
 
+
+#### 3.3  队列(数组实现)
+
+- 业务场景描述: 银行排队叫号, 客户在大厅中打号,排队,第一个叫到号的人首先办理业务,一次二号,三号,等等 
+
+- 遵循先进先出规则,第二个编号的客户也不需要关注自己站在哪,坐在哪,只需要关注自己前一个编号是否能被叫到,
+
+- 队列概念: 队列是一个有序列表,可以用数组或链表来实现,遵循先进选出原则
+
+- 数组实现队列示意图
+
+  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220226193356.png" alt="image-20220226193356111" style="zoom: 50%;" />
+
+- 数组实现队列思路(尾插法)
+
+  -  队列需要遵循先进先出原则，使用数组实现队列,需要两个辅助指针(头部指针与尾部指针),还需要一个最大容量
+  - 插入数据时,从尾部插入,尾指针下标后移,新增数据时记得判断该队列是否已满
+  - 取出数据时,从头部取出,头指针下标后移,取出数据时记得判断该队列是否为空
+  - 队列判空, 如果头部指针等于尾部指针说明该队列为初始化的队列,无数据新增(尾部指针未后移),则该队列为空
+  - 队列判满,如果尾部指针等于该队列最大容量减一,则证明该队列已满,
+  - 取出队列所有数据,遍历队列即可,遍历前记得判断该队列是否为空
+
+- 初始化
+
+  ```java
+      //队列
+      private static int[] array;
+      //头指针
+      private static int front;
+      //尾指针
+      private static int rear;
+      //最大容量
+      private static int maxSize;
+     //初始化队列
+      public ArrayImplQueue(int arrayMaxSize){
+          maxSize = arrayMaxSize;
+          array = new int[maxSize];
+          front = -1;
+          rear = -1;
+      }
+  ```
+
+- 判空
+
+  ```java
+    //判断队列是否为空
+      public void isEmpty(){
+          //头部指针与尾部指针相等时,队列位空
+          if(front == rear){
+             throw new RuntimeException("queue is empty!");
+          }
+      }
+  ```
+
+- 判满
+
+  ```java
+    //判断队列是否已满
+      public void isFull(){
+          //尾部指针与最大容量减1相等时,队列已满
+          if(rear == maxSize -1){
+              throw new RuntimeException("queue is full!");
+          }
+      }
+  ```
+
+- 添加数据
+
+  ```java
+   //添加数据
+      public void addQueue(int data){
+          //添加数据时判断队列是否已满
+          isFull();
+          //尾指针后移
+          rear++;
+          array[rear] = data;
+      }
+  ```
+
+- 取出数据
+
+  ```java
+   //取出数据
+      public  int getQueue(){
+          //取出数据时判断队列是否为空
+          isEmpty();
+          //头指针后移
+          front++;
+          int data = array[front];
+          return data;
+      }
+  ```
+
+- 取出队列所有数据
+
+  ```java
+   //取出队列所有数据
+      public List<Integer> listQueue(){
+          isEmpty();
+          List<Integer> list = new ArrayList<>();
+          for (int i = 0; i < array.length; i++) {
+              int item = array[i];
+              list.add(item);
+          }
+          return list;
+      }
+  ```
+
+- 取出队列头部数据
+
+  ```java
   
+      //取出队列头部数据
+      public int getQueueFront(){
+          isEmpty();
+          int data = array[0];
+          return data;
+      }
+  ```
+
+- 取出队列尾部数据
+
+  ```java
+     //取出队列尾部数据
+      private int getQueueRear(){
+          isEmpty();
+          int i = array[rear];
+          return i;
+      }
+  ```
+
+
 
 
 

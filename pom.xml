@@ -7,8 +7,11 @@
     <groupId>cn.com.wudskq</groupId>
     <artifactId>structure-project</artifactId>
     <version>1.0.0</version>
+    <modules>
+        <module>jdk-source-code</module>
+    </modules>
 
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
 
     <properties>
