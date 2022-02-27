@@ -289,9 +289,96 @@
       }
   ```
 
+#### 3.4 队列(环形队列)
 
+- 3.1中数组实现的普通队列并不能实现复用
 
+  ```java
+   ArrayImplQueue queue = new ArrayImplQueue(10);
+          queue.addQueue(1);
+          queue.addQueue(2);
+          queue.addQueue(3);
+          queue.addQueue(4);
+          queue.addQueue(5);
+          queue.addQueue(6);
+          queue.addQueue(7);
+          queue.addQueue(8);
+          queue.addQueue(9);
+          queue.addQueue(10);
+          System.out.println(queue.getQueue());
+          List<Integer> list = queue.listQueue();
+          queue.addQueue(11);
+  ```
 
+  - 当数据添加到队列最大容量后,取出队列先入的数据,在往队列中进行添加,会报错
 
+  ```bash
+  Connected to the target VM, address: '127.0.0.1:54920', transport: 'socket'
+  1
+  Exception in thread "main" java.lang.RuntimeException: queue is full!
+  	at cn.com.wudskq.second.datastructure.queue.ArrayImplQueue.isFull(ArrayImplQueue.java:65)
+  	at cn.com.wudskq.second.datastructure.queue.ArrayImplQueue.addQueue(ArrayImplQueue.java:72)
+  	at cn.com.wudskq.second.datastructure.queue.ArrayImplQueue.main(ArrayImplQueue.java:40)
+  Disconnected from the target VM, address: '127.0.0.1:54920', transport: 'socket'
+  ```
 
+- 未能实现队列的复用性! 使用数组实现环形队列就可以实现复用功能
 
+- 指针仍然是两个指针,头指针front,尾指针rear,指针位置进行变化,初始化时front=0,rear=maxSize-1
+
+- 当循环队列属于上图的d1情况时，是无法判断当前状态是队空还是队满。为了达到判断队列状态的目的，可以通过牺牲一个存储空间来实现。 
+  如下图d2所示， 
+  队头指针在队尾指针的下一位置时，队满。 Q.front == (Q.rear + 1) % MAXSIZE 因为头指针可能又重新从0位置开始，而此时队尾指针是MAXSIZE - 1，所以需要求余。 
+  当队头和队尾指针在同一位置时，队空。 Q.front == Q.rear;
+
+  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220228012609.png" alt="image-20220228012609730" style="zoom: 50%;" />
+
+- 判断队列是否为空
+
+  ```java
+  //判断队列是否为空
+      private Boolean isEmpty(){
+          if(front == rear){
+              throw new RuntimeException("queue is empty!");
+          }
+          return true;
+      }
+  
+  ```
+
+- 判断队列是否已满
+
+  ```java
+    //判断队列是否已满
+      private Boolean isFull(){
+          if((rear + 1) % maxSize == front){
+              throw new RuntimeException("queue is full!");
+          }
+          return false;
+      }
+  ```
+
+- 数据入队列
+
+  ```java
+     //入队
+      private void addQueue(int data){
+          isFull();
+          array[rear] = data;
+          rear = (rear+1)%maxSize;
+      }
+  ```
+
+- 数据出队列
+
+  ```java
+   //出队
+      private int getQueue(){
+          isEmpty();
+          int i = array[front];
+          front = (front+1)%maxSize;
+          return i;
+      }
+  ```
+
+  

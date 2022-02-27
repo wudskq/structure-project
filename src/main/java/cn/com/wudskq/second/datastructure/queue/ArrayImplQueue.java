@@ -26,8 +26,18 @@ public class ArrayImplQueue {
     public static void main(String[] args) {
         ArrayImplQueue queue = new ArrayImplQueue(10);
         queue.addQueue(1);
-        queue.getQueue();
-        queue.getQueueFront();
+        queue.addQueue(2);
+        queue.addQueue(3);
+        queue.addQueue(4);
+        queue.addQueue(5);
+        queue.addQueue(6);
+        queue.addQueue(7);
+        queue.addQueue(8);
+        queue.addQueue(9);
+        queue.addQueue(10);
+        System.out.println(queue.getQueue());
+        List<Integer> list = queue.listQueue();
+        queue.addQueue(11);
     }
 
 
