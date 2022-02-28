@@ -381,4 +381,17 @@
       }
   ```
 
-  
+
+#### 3.5链表(单向链表)
+
+- 概念: 链表是有序的列表,链表存储在物理上是不连续的,在逻辑上存储是连续的
+
+  - 链表分为有头部节点的链表与没有头部节点的链表
+
+- 逻辑结构图
+
+  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220301021749.png" alt="image-20220301021743772" style="zoom:50%;" />
+
+- 物理结构图
+
+  ![image-20220301022455258](https://gitee.com/wudskq/cloud_img/raw/master/data/20220301022455.png)
