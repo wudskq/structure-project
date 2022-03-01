@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.xml.soap.Node;
 import java.io.Serializable;
 
 /**
@@ -17,11 +16,16 @@ import java.io.Serializable;
  */
 @Data
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
 public class SingleNode implements Serializable {
+
+    private int index;
 
     private Object data;
 
-    private Node  next;
+    private SingleNode  next;
+
+    public SingleNode(int index, Object data) {
+        this.index = index;
+        this.data = data;
+    }
 }
