@@ -400,6 +400,16 @@
 
   - 在有head节点的情况下只需要判断head节点的next指针是否为空
 
+    ```java
+     //判空
+        private void isEmpty(){
+            SingleNode temp = headNode;
+            if(null == temp.getNext()){
+                throw new RuntimeException("LinkedList is empty!");
+            }
+        }
+    ```
+
 - 链表新增数据
 
   - 链表新增数据时,都是新增在最后一个节点的next下
@@ -407,16 +417,50 @@
   - 创建一个辅助节点使之等于头部节点,无限循环,如果复制节点的next指针为空,则证明找到了链表的最后,则退出循环,否则辅助节点的next指针一直后移
 
     ```java
-    
-    
+      //添加节点
+        private void addSingeNode(SingleNode node){
+            //头部节点不能动
+            SingleNode tempHeadNode = headNode;
+            while (true){
+                if(tempHeadNode.getNext() == null){
+                    break;
+                }
+                tempHeadNode = tempHeadNode.getNext();
+            }
+            //添加数据
+            tempHeadNode.setNext(node);
+        }
     ```
 
 - 链表删除数据
 
   - 链表删除指定index下的节点
+
   - 创建一个临时节点等于头部节点,循环遍历找到对应的下标位置
-  - 获取到要删除节点的上一个节点,与删除节点的下一个节点
-  - 使上一个节点的next指针指向要删除节点的下一个节点
+
+  - 主要是要获取到要删除节点的上一个节点,然后使上一个节点的next指向新的要删除节点的下一个节点,接着要删除节点的next指针置为空
+
+    ```java
+     //删除指定下标的节点
+        private void delSingelNode(int index){
+            isEmpty();
+            SingleNode temp = headNode;
+            Boolean flag = true;
+            while (flag){
+                //找到要删除节点的上一个节点
+                if(index == temp.getNext().getIndex()){
+                    flag = false;
+                    break;
+                }else {
+                    temp = temp.getNext();
+                }
+            }
+            //删除节点的上一个节点的next指针指向新的节点
+            temp.setNext(temp.getNext().getNext());
+            //删除的节点next指针置空
+            temp.getNext().setNext(null);
+        }
+    ```
 
 - 链表获取全部数据
 
@@ -427,4 +471,36 @@
 
   - 循环便利获取指定下标的节点,更新该节点的data属性即可
 
-- 
+    ```java
+      //更新指定下标位置数据
+        private void updateSingelNode(SingleNode node){
+            isEmpty();
+            SingleNode temp = headNode;
+            Boolean flag = true;
+            int index = node.getIndex();
+            while (flag){
+                //找到要更新的节点
+                if(index == temp.getIndex()){
+                    flag = false;
+                    break;
+                }else {
+                    temp = temp.getNext();
+                }
+            }
+            //更新数据
+            temp.setData(node.getData());
+        }
+    ```
+
+#### 3.6 单向链表(BAT面试题)
+
+- 求单链表中有效节点的个数
+- 查找单链表中倒数第K个节点
+- 单链表的反转
+- 从头到尾打印单链表
+  - 反向便利
+  - stack栈
+- 合并两个有序单链表,合并之后链表仍然有序
+
+
+
