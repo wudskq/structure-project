@@ -72,7 +72,7 @@
       }
   ```
 
-#### 3.2数组(稀疏数组)
+#### 3.2 数组(稀疏数组)
 
 - 场景依然是3.1五子棋盘场景,要求用最小的内存或存储空间实现五子棋盘的存盘/读盘功能
 
@@ -382,7 +382,7 @@
   ```
 
 
-#### 3.5链表(单向链表)
+#### 3.5 链表(单向链表)
 
 - 概念: 链表是有序的列表,链表存储在物理上是不连续的,在逻辑上存储是连续的
 
@@ -555,7 +555,32 @@
 
 - 单链表求中间节点
 
-  - 场景设计
+  - 场景设计: 给定一个单向链表,返回这个单向链表的中间节点
+  - 思路分析: 设置快慢指针,fast,slow,快指针始终比慢指针步长多一倍,如果fast等于空,说明到了链表的最后一个节点,又因为slow指针的步长等于1/2的fast指针,即当前slow指针所指的节点就为当前链表的中点值
+
+  ```java
+      //获取链表的中间节点
+      //设置快慢指针解决链表倒数问题
+      private static SingleNode getMiddleNode(SingleNode headNode){
+          Boolean flag = true;
+          //慢指针
+          SingleNode slow  = headNode.getNext();
+          //快指针
+          SingleNode fast  = headNode.getNext();
+          //fast的next指针为null或者fast的next指针的next指针为空,说明fast已到最后一个节点
+          while (flag){
+              if(null == fast.getNext() || null == fast.getNext().getNext()){
+                  flag = false;
+                  return  slow;
+              }
+              //慢指针
+               slow  = slow.getNext();
+               //快指针
+               fast  = fast.getNext().getNext();
+          }
+          return  null;
+      }
+  ```
 
 - 单链表的反转
 - 从头到尾打印单链表

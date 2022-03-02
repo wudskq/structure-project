@@ -22,11 +22,15 @@ public class SingelLinkedListQuestions {
         linkedList.addSingeNode(new SingleNode(4,"4"));
         linkedList.addSingeNode(new SingleNode(5,"5"));
         linkedList.addSingeNode(new SingleNode(6,"6"));
+        linkedList.addSingeNode(new SingleNode(7,"7"));
+        linkedList.addSingeNode(new SingleNode(8,"8"));
         //获取头节点
         SingleNode headNode = linkedList.getHeadNode();
         int linkedListSize = getLinkedListSize(headNode);
-        SingleNode reciprocalNode = getReciprocalNode(headNode, 0);
-        System.out.println(reciprocalNode.toString());
+        SingleNode reciprocalNode = getReciprocalNode(headNode, 5);
+        System.out.println("倒数第K个节点为: "+reciprocalNode.toString());
+        SingleNode middleNode = getMiddleNode(headNode);
+        System.out.println("中间节点为: "+middleNode.toString());
     }
 
 
@@ -68,13 +72,33 @@ public class SingelLinkedListQuestions {
             //判断如果快指针为空,说明fast走到链表最后
             //停止循环,此时slow指针指向的位置就是倒数第k个节点
             if(null == fast){
-                flag = false;
-                break;
+                return  slow;
             }
         }
-        return slow;
+        return null;
     }
 
+    //获取链表的中间节点
+    //设置快慢指针解决链表倒数问题
+    private static SingleNode getMiddleNode(SingleNode headNode){
+        Boolean flag = true;
+        //慢指针
+        SingleNode slow  = headNode.getNext();
+        //快指针
+        SingleNode fast  = headNode.getNext();
+        //fast的next指针为null或者fast的next指针的next指针为空,说明fast已到最后一个节点
+        while (flag){
+            if(null == fast.getNext() || null == fast.getNext().getNext()){
+                flag = false;
+                return  slow;
+            }
+            //慢指针
+             slow  = slow.getNext();
+             //快指针
+             fast  = fast.getNext().getNext();
+        }
+        return  null;
+    }
 
 
 }
