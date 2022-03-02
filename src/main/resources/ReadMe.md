@@ -495,7 +495,68 @@
 #### 3.6 单向链表(BAT面试题)
 
 - 求单链表中有效节点的个数
+
+  - 思路: 设置一个计数器,和辅助节点,循环遍历到最后一个节点即可
+
+    ```java
+      //求链表中的有效个数
+        private static int getLinkedListSize(SingleNode headNode){
+            if(headNode.getNext() == null){
+                return 0;
+            }
+            int count = 0;
+            //辅助节点
+            SingleNode temp = headNode.getNext();
+            while (null != temp){
+                count++;
+                temp = temp.getNext();
+            }
+            return count;
+        }
+    ```
+
 - 查找单链表中倒数第K个节点
+
+  - 思路分析: 快慢指针问题解决链表倒数问题,设置两个指针fast(快指针),slow(慢指针),都等于head节点,
+  - 先让fast指针向后移动k步,这个K值不能为小于0或者为负数
+  - 接着无限循环快满指针,fast = fast.getNext(), slow = slow.getNext(),
+  - 判断fast指针,如果快指针节点等于null,说明已经走到了链表最后,此时slow指针与fast指针相差k个距离,
+  - 即slow指针所在的节点就是倒数第K个数
+
+  ```java
+   //求链表中倒数第k个节点 正向数倒数的节点下标为n-k+1
+      //设置快慢指针解决链表倒数问题
+      private static SingleNode getReciprocalNode(SingleNode headNode, int index){
+          Boolean flag = true;
+          if(null == headNode || null == headNode.getNext()){
+              return null;
+          }
+          //慢指针
+          SingleNode slow = headNode;
+          //快指针
+          SingleNode fast = headNode;
+          //快指针先向后移动k个位置
+          for (int i = 0; i <index; i++) {
+              fast = fast.getNext();
+          }
+          while (flag){
+              fast = fast.getNext();
+              slow = slow.getNext();
+              //判断如果快指针为空,说明fast走到链表最后
+              //停止循环,此时slow指针指向的位置就是倒数第k个节点
+              if(null == fast){
+                  flag = false;
+                  break;
+              }
+          }
+          return slow;
+      }
+  ```
+
+- 单链表求中间节点
+
+  - 场景设计
+
 - 单链表的反转
 - 从头到尾打印单链表
   - 反向便利

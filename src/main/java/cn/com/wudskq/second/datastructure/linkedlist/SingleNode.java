@@ -15,7 +15,6 @@ import java.io.Serializable;
  * @createTime 2022年03月01日 02:26:00
  */
 @Data
-@ToString
 public class SingleNode implements Serializable {
 
     private int index;
@@ -27,5 +26,14 @@ public class SingleNode implements Serializable {
     public SingleNode(int index, Object data) {
         this.index = index;
         this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "SingleNode{" +
+                "index=" + index +
+                ", data=" + data +
+                ", next=" + next +
+                '}';
     }
 }

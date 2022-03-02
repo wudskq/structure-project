@@ -16,6 +16,11 @@ public class SingelLinkedList {
     private SingleNode headNode = new SingleNode(-1,"headNode");
 
 
+    public SingleNode getHeadNode() {
+        return headNode;
+    }
+
+
     public static void main(String[] args) {
         SingelLinkedList linkedList = new SingelLinkedList();
         linkedList.addSingeNode(new SingleNode(0,"sdasda"));
@@ -29,7 +34,7 @@ public class SingelLinkedList {
 
 
     //判空
-    private void isEmpty(){
+    public void isEmpty(){
         SingleNode temp = headNode;
         if(null == temp.getNext()){
             throw new RuntimeException("LinkedList is empty!");
@@ -38,7 +43,7 @@ public class SingelLinkedList {
 
 
     //获取指定下标的节点数据
-    private SingleNode getIndex(int index){
+    public SingleNode getIndex(int index){
         isEmpty();
         SingleNode temp = headNode.getNext();
         Boolean flag = true;
@@ -54,7 +59,7 @@ public class SingelLinkedList {
 
 
     //添加节点
-    private void addSingeNode(SingleNode node){
+    public void addSingeNode(SingleNode node){
         //头部节点不能动
         SingleNode tempHeadNode = headNode;
         while (true){
@@ -69,7 +74,7 @@ public class SingelLinkedList {
 
 
     //删除指定下标的节点
-    private void delSingelNode(int index){
+    public void delSingelNode(int index){
         isEmpty();
         SingleNode temp = headNode;
         Boolean flag = true;
@@ -89,7 +94,7 @@ public class SingelLinkedList {
     }
 
     //更新指定下标位置数据
-    private void updateSingelNode(SingleNode node){
+    public void updateSingelNode(SingleNode node){
         isEmpty();
         SingleNode temp = headNode;
         Boolean flag = true;
