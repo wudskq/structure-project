@@ -112,4 +112,17 @@ public class SingelLinkedList {
         temp.setData(node.getData());
     }
 
+    //遍历链表
+    public void list(SingleNode headNode){
+        isEmpty();
+        SingleNode temp = headNode;
+        while (true){
+            temp = temp.getNext();
+            if(null == temp){
+                break;
+            }
+            System.out.println(temp.toString());
+        }
+    }
+
 }

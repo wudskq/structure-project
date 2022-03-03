@@ -27,10 +27,19 @@ public class SingelLinkedListQuestions {
         //获取头节点
         SingleNode headNode = linkedList.getHeadNode();
         int linkedListSize = getLinkedListSize(headNode);
+
         SingleNode reciprocalNode = getReciprocalNode(headNode, 5);
         System.out.println("倒数第K个节点为: "+reciprocalNode.toString());
+
         SingleNode middleNode = getMiddleNode(headNode);
         System.out.println("中间节点为: "+middleNode.toString());
+
+        System.out.println("迭代反转法");
+        iterativeInversion(headNode);
+
+        System.out.println("遍历链表");
+        linkedList.list(headNode);
+
     }
 
 
@@ -98,6 +107,41 @@ public class SingelLinkedListQuestions {
              fast  = fast.getNext().getNext();
         }
         return  null;
+    }
+
+    //单向链表反转
+    //迭代反转法
+    private static void iterativeInversion(SingleNode headNode){
+        //计数器
+        int count = 0;
+        Boolean flag = true;
+        if(null == headNode.getNext()){
+            return;
+        }
+        SingleNode begin = null;
+        SingleNode middle = headNode;
+        SingleNode end = headNode.getNext();
+        while (flag){
+            middle.setNext(begin);
+            //代表指针已到链表最后
+            if(null == end){
+                flag = false;
+                break;
+            }
+            //所有指针后移
+            begin = middle;
+            middle = end;
+            end = end.getNext();
+            //确保反转后最后一个节点的next指针为null
+            count++;
+            //count=1时begin为head,等于2时begin为初始链表的第一个节点
+            if(count == 2){
+                //begin指针的next指针置为空
+                begin.setNext(null);
+            }
+        }
+        //头节点指向middle指针
+        headNode.setNext(middle);
     }
 
 

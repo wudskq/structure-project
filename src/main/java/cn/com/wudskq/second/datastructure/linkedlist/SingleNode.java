@@ -33,7 +33,6 @@ public class SingleNode implements Serializable {
         return "SingleNode{" +
                 "index=" + index +
                 ", data=" + data +
-                ", next=" + next +
                 '}';
     }
 }

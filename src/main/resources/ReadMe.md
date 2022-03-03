@@ -1,3 +1,5 @@
+
+
 ## JAVA数据结构与算法
 
 ### 1.算法与数据结构的关系
@@ -583,10 +585,189 @@
   ```
 
 - 单链表的反转
+
+  - 图示
+
+  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220303200816.png" alt="image-20220303200810957" style="zoom: 50%;" />
+
+  - 思路解析 [10.1 迭代反转链表]()
+
+  - 迭代反转链表法:  设置三个指针 begin,middle,end, begin指针指向空,middle指向head节点,end指针指向head.next节点遍历链表,使其middle指向begin,随后三个指针都向后移动一步,直至end为空(middle.next为空),最后使其middle的next指针指向begin,head的next指针指向middle即可完成单向链表的反转
+
+  - 代码
+
+    ```java
+    //单向链表反转
+        //迭代反转法
+        private static void iterativeInversion(SingleNode headNode){
+            //计数器
+            int count = 0;
+            Boolean flag = true;
+            if(null == headNode.getNext()){
+                return;
+            }
+            SingleNode begin = null;
+            SingleNode middle = headNode;
+            SingleNode end = headNode.getNext();
+            while (flag){
+                middle.setNext(begin);
+                //代表指针已到链表最后
+                if(null == end){
+                    flag = false;
+                    break;
+                }
+                //所有指针后移
+                begin = middle;
+                middle = end;
+                end = end.getNext();
+                //确保反转后最后一个节点的next指针为null
+                count++;
+                //count=1时begin为head,等于2时begin为初始链表的第一个节点
+                if(count == 2){
+                    //begin指针的next指针置为空
+                    begin.setNext(null);
+                }
+            }
+            //头节点指向middle指针
+            headNode.setNext(middle);
+        }
+    ```
+
 - 从头到尾打印单链表
   - 反向便利
   - stack栈
+  
 - 合并两个有序单链表,合并之后链表仍然有序
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 10.引用
+
+#### 10.1 迭代反转链表
+
+该算法的实现思想非常直接，就是从当前链表的首元节点开始，一直遍历至链表的最后一个节点，这期间会逐个改变所遍历到的节点的指针域，另其指向前一个节点。
+
+具体的实现方法也很简单，借助 3 个指针即可。以图 1 中建立的链表为例，首先我们定义 3 个指针并分别命名为 beg、mid、end。它们的初始指向如图 3 所示：
+
+
+
+![迭代反转链表的初始状态](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304002838.gif)
+
+​                                                                        图 3 迭代反转链表的初始状态
+
+
+在上图的基础上，遍历链表的过程就等价为：3 个指针每次各向后移动一个节点，直至 mid 指向链表中最后一个节点（此时 end 为 NULL ）。需要注意的是，这 3 个指针每移动之前，都需要做一步操作，即改变 mid 所指节点的指针域，另其指向和 beg 相同。
+
+\1) 在图 3 的基础上，我们先改变 mid 所指节点的指针域指向，另其和 beg 相同（即改为 NULL），然后再将 3 个指针整体各向后移动一个节点。整个过程如图 4 所示：
+
+
+
+![迭代反转链表过程一](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304002846.gif)
+
+​                                                                           图 4 迭代反转链表过程一
+
+
+\2) 在图 4 基础上，先改变 mid 所指节点的指针域指向，另其和 beg 相同（指向节点 1 ），再将 3 个指针整体各向后移动一个节点。整个过程如图 5 所示：
+
+
+
+![迭代反转链表过程二](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304002850.gif)
+																	图 5 迭代反转链表过程二
+
+
+\3) 在图 5 基础上，先改变 mid 所指节点的指针域指向，另其和 beg 相同（指向节点 2 ），再将 3 个指针整体各向后移动一个节点。整个过程如图 6 所示：
+
+
+
+![迭代反转链表过程三](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304002853.gif)
+																	图 6 迭代反转链表过程三
+
+
+\4) 图 6 中，虽然 mid 指向了原链表最后一个节点，但显然整个反转的操作还差一步，即需要最后修改一次 mid 所指节点的指针域指向，另其和 beg 相同（指向节点 3）。如图 7 所示：
+
+
+
+![迭代反转链表过程四](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304002801.gif)
+																		图 7 迭代反转链表过程四
+
+> 注意，这里只需改变 mid 所指节点的指向即可，不用修改 3 个指针的指向。
+
+\5) 最后只需改变 head 头指针的指向，另其和 mid 同向，就实现了链表的反转。
+
+```c
+//迭代反转法，head 为无头节点链表的头指针
+link * iteration_reverse(link* head) {
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+    else {
+        link * beg = NULL;
+        link * mid = head;
+        link * end = head->next;
+        //一直遍历
+        while (1)
+        {
+            //修改 mid 所指节点的指向
+            mid->next = beg;
+            //此时判断 end 是否为 NULL，如果成立则退出循环
+            if (end == NULL) {
+                break;
+            }
+            //整体向后移动 3 个指针
+            beg = mid;
+            mid = end;
+            end = end->next;
+        }
+        //最后修改 head 头指针的指向
+        head = mid;
+        return head;
+    }
+}
+```
 
