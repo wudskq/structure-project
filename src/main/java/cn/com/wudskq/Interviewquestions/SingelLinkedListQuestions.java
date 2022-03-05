@@ -26,16 +26,22 @@ public class SingelLinkedListQuestions {
         linkedList.addSingeNode(new SingleNode(8,"8"));
         //获取头节点
         SingleNode headNode = linkedList.getHeadNode();
-        int linkedListSize = getLinkedListSize(headNode);
+//        int linkedListSize = getLinkedListSize(headNode);
+//
+//        SingleNode reciprocalNode = getReciprocalNode(headNode, 5);
+//        System.out.println("倒数第K个节点为: "+reciprocalNode.toString());
+//
+//        SingleNode middleNode = getMiddleNode(headNode);
+//        System.out.println("中间节点为: "+middleNode.toString());
+//
+//        System.out.println("迭代反转法");
+//        iterativeInversion(headNode);
+//
+//        System.out.println("遍历链表");
+//        linkedList.list(headNode);
 
-        SingleNode reciprocalNode = getReciprocalNode(headNode, 5);
-        System.out.println("倒数第K个节点为: "+reciprocalNode.toString());
-
-        SingleNode middleNode = getMiddleNode(headNode);
-        System.out.println("中间节点为: "+middleNode.toString());
-
-        System.out.println("迭代反转法");
-        iterativeInversion(headNode);
+        System.out.println("就地逆置法");
+        localReverse(headNode);
 
         System.out.println("遍历链表");
         linkedList.list(headNode);
@@ -144,5 +150,23 @@ public class SingelLinkedListQuestions {
         headNode.setNext(middle);
     }
 
+    //就地逆置法反转单向链表
+    private static void localReverse(SingleNode headNode){
+        Boolean flag = true;
+        if(null == headNode.getNext() || null == headNode.getNext().getNext()){
+            return;
+        }
+        SingleNode begin = headNode.getNext();
+        SingleNode end = begin.getNext();
+        while (flag){
+            //移除end指针节点
+            begin.setNext(end.getNext());
+            end = end.getNext();
+            if(null == end){
+                flag = false;
+                break;
+            }
+        }
+    }
 
 }

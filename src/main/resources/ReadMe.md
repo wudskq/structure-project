@@ -496,148 +496,161 @@
 
 #### 3.6 单向链表(BAT面试题)
 
-- 求单链表中有效节点的个数
+##### 3.6.1 求单链表中有效节点的个数
 
-  - 思路: 设置一个计数器,和辅助节点,循环遍历到最后一个节点即可
-
-    ```java
-      //求链表中的有效个数
-        private static int getLinkedListSize(SingleNode headNode){
-            if(headNode.getNext() == null){
-                return 0;
-            }
-            int count = 0;
-            //辅助节点
-            SingleNode temp = headNode.getNext();
-            while (null != temp){
-                count++;
-                temp = temp.getNext();
-            }
-            return count;
-        }
-    ```
-
-- 查找单链表中倒数第K个节点
-
-  - 思路分析: 快慢指针问题解决链表倒数问题,设置两个指针fast(快指针),slow(慢指针),都等于head节点,
-  - 先让fast指针向后移动k步,这个K值不能为小于0或者为负数
-  - 接着无限循环快满指针,fast = fast.getNext(), slow = slow.getNext(),
-  - 判断fast指针,如果快指针节点等于null,说明已经走到了链表最后,此时slow指针与fast指针相差k个距离,
-  - 即slow指针所在的节点就是倒数第K个数
+- 思路: 设置一个计数器,和辅助节点,循环遍历到最后一个节点即可
 
   ```java
-   //求链表中倒数第k个节点 正向数倒数的节点下标为n-k+1
-      //设置快慢指针解决链表倒数问题
-      private static SingleNode getReciprocalNode(SingleNode headNode, int index){
+    //求链表中的有效个数
+      private static int getLinkedListSize(SingleNode headNode){
+          if(headNode.getNext() == null){
+              return 0;
+          }
+          int count = 0;
+          //辅助节点
+          SingleNode temp = headNode.getNext();
+          while (null != temp){
+              count++;
+              temp = temp.getNext();
+          }
+          return count;
+      }
+  ```
+
+##### 3.6.2 查找单链表中倒数第K个节点
+
+- 思路分析: 快慢指针问题解决链表倒数问题,设置两个指针fast(快指针),slow(慢指针),都等于head节点,
+- 先让fast指针向后移动k步,这个K值不能为小于0或者为负数
+- 接着无限循环快满指针,fast = fast.getNext(), slow = slow.getNext(),
+- 判断fast指针,如果快指针节点等于null,说明已经走到了链表最后,此时slow指针与fast指针相差k个距离,
+- 即slow指针所在的节点就是倒数第K个数
+
+```java
+ //求链表中倒数第k个节点 正向数倒数的节点下标为n-k+1
+    //设置快慢指针解决链表倒数问题
+    private static SingleNode getReciprocalNode(SingleNode headNode, int index){
+        Boolean flag = true;
+        if(null == headNode || null == headNode.getNext()){
+            return null;
+        }
+        //慢指针
+        SingleNode slow = headNode;
+        //快指针
+        SingleNode fast = headNode;
+        //快指针先向后移动k个位置
+        for (int i = 0; i <index; i++) {
+            fast = fast.getNext();
+        }
+        while (flag){
+            fast = fast.getNext();
+            slow = slow.getNext();
+            //判断如果快指针为空,说明fast走到链表最后
+            //停止循环,此时slow指针指向的位置就是倒数第k个节点
+            if(null == fast){
+                flag = false;
+                break;
+            }
+        }
+        return slow;
+    }
+```
+
+##### 3.6.3 单链表求中间节点
+
+- 场景设计: 给定一个单向链表,返回这个单向链表的中间节点
+- 思路分析: 设置快慢指针,fast,slow,快指针始终比慢指针步长多一倍,如果fast等于空,说明到了链表的最后一个节点,又因为slow指针的步长等于1/2的fast指针,即当前slow指针所指的节点就为当前链表的中点值
+
+```java
+    //获取链表的中间节点
+    //设置快慢指针解决链表倒数问题
+    private static SingleNode getMiddleNode(SingleNode headNode){
+        Boolean flag = true;
+        //慢指针
+        SingleNode slow  = headNode.getNext();
+        //快指针
+        SingleNode fast  = headNode.getNext();
+        //fast的next指针为null或者fast的next指针的next指针为空,说明fast已到最后一个节点
+        while (flag){
+            if(null == fast.getNext() || null == fast.getNext().getNext()){
+                flag = false;
+                return  slow;
+            }
+            //慢指针
+             slow  = slow.getNext();
+             //快指针
+             fast  = fast.getNext().getNext();
+        }
+        return  null;
+    }
+```
+
+##### 3.6.4 单链表的反转(迭代反转法)
+
+- 图示
+
+<img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220303200816.png" alt="image-20220303200810957" style="zoom: 50%;" />
+
+- 思路解析 [10.1 迭代反转链表]()
+
+- 迭代反转链表法:  设置三个指针 begin,middle,end, begin指针指向空,middle指向head节点,end指针指向head.next节点遍历链表,使其middle指向begin,随后三个指针都向后移动一步,直至end为空(middle.next为空),最后使其middle的next指针指向begin,head的next指针指向middle即可完成单向链表的反转
+
+- 代码
+
+  ```java
+  //单向链表反转
+      //迭代反转法
+      private static void iterativeInversion(SingleNode headNode){
+          //计数器
+          int count = 0;
           Boolean flag = true;
-          if(null == headNode || null == headNode.getNext()){
-              return null;
+          if(null == headNode.getNext()){
+              return;
           }
-          //慢指针
-          SingleNode slow = headNode;
-          //快指针
-          SingleNode fast = headNode;
-          //快指针先向后移动k个位置
-          for (int i = 0; i <index; i++) {
-              fast = fast.getNext();
-          }
+          SingleNode begin = null;
+          SingleNode middle = headNode;
+          SingleNode end = headNode.getNext();
           while (flag){
-              fast = fast.getNext();
-              slow = slow.getNext();
-              //判断如果快指针为空,说明fast走到链表最后
-              //停止循环,此时slow指针指向的位置就是倒数第k个节点
-              if(null == fast){
+              middle.setNext(begin);
+              //代表指针已到链表最后
+              if(null == end){
                   flag = false;
                   break;
               }
-          }
-          return slow;
-      }
-  ```
-
-- 单链表求中间节点
-
-  - 场景设计: 给定一个单向链表,返回这个单向链表的中间节点
-  - 思路分析: 设置快慢指针,fast,slow,快指针始终比慢指针步长多一倍,如果fast等于空,说明到了链表的最后一个节点,又因为slow指针的步长等于1/2的fast指针,即当前slow指针所指的节点就为当前链表的中点值
-
-  ```java
-      //获取链表的中间节点
-      //设置快慢指针解决链表倒数问题
-      private static SingleNode getMiddleNode(SingleNode headNode){
-          Boolean flag = true;
-          //慢指针
-          SingleNode slow  = headNode.getNext();
-          //快指针
-          SingleNode fast  = headNode.getNext();
-          //fast的next指针为null或者fast的next指针的next指针为空,说明fast已到最后一个节点
-          while (flag){
-              if(null == fast.getNext() || null == fast.getNext().getNext()){
-                  flag = false;
-                  return  slow;
+              //所有指针后移
+              begin = middle;
+              middle = end;
+              end = end.getNext();
+              //确保反转后最后一个节点的next指针为null
+              count++;
+              //count=1时begin为head,等于2时begin为初始链表的第一个节点
+              if(count == 2){
+                  //begin指针的next指针置为空
+                  begin.setNext(null);
               }
-              //慢指针
-               slow  = slow.getNext();
-               //快指针
-               fast  = fast.getNext().getNext();
           }
-          return  null;
+          //头节点指向middle指针
+          headNode.setNext(middle);
       }
   ```
 
-- 单链表的反转
+##### 3.6.5 单链表的反转(就地逆置法)
 
-  - 图示
+- 引用 
 
-  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220303200816.png" alt="image-20220303200810957" style="zoom: 50%;" />
+- 思路解析: 需要两个辅助指针begin&&end,begin指针指向head.next,end指针指向head.next.next,
 
-  - 思路解析 [10.1 迭代反转链表]()
+  遍历链表,取出end节点数据,使head节点的next指针指向end,判断end是否为空,为空遍历结束,
 
-  - 迭代反转链表法:  设置三个指针 begin,middle,end, begin指针指向空,middle指向head节点,end指针指向head.next节点遍历链表,使其middle指向begin,随后三个指针都向后移动一步,直至end为空(middle.next为空),最后使其middle的next指针指向begin,head的next指针指向middle即可完成单向链表的反转
+  begin节点的next指针置为空
 
-  - 代码
-
-    ```java
-    //单向链表反转
-        //迭代反转法
-        private static void iterativeInversion(SingleNode headNode){
-            //计数器
-            int count = 0;
-            Boolean flag = true;
-            if(null == headNode.getNext()){
-                return;
-            }
-            SingleNode begin = null;
-            SingleNode middle = headNode;
-            SingleNode end = headNode.getNext();
-            while (flag){
-                middle.setNext(begin);
-                //代表指针已到链表最后
-                if(null == end){
-                    flag = false;
-                    break;
-                }
-                //所有指针后移
-                begin = middle;
-                middle = end;
-                end = end.getNext();
-                //确保反转后最后一个节点的next指针为null
-                count++;
-                //count=1时begin为head,等于2时begin为初始链表的第一个节点
-                if(count == 2){
-                    //begin指针的next指针置为空
-                    begin.setNext(null);
-                }
-            }
-            //头节点指向middle指针
-            headNode.setNext(middle);
-        }
-    ```
-
-- 从头到尾打印单链表
-  - 反向便利
-  - stack栈
   
-- 合并两个有序单链表,合并之后链表仍然有序
+
+##### 3.6.6 从头到尾打印单链表
+
+- 反向遍历
+- stack栈
+
+##### 3.6.7 合并两个有序单链表,合并之后链表仍然有序
 
 
 
@@ -771,3 +784,69 @@ link * iteration_reverse(link* head) {
 }
 ```
 
+#### 10.2 就地逆置法反转链表
+
+就地逆置法和头插法的实现思想类似，唯一的区别在于，头插法是通过建立一个新链表实现的，而就地逆置法则是直接对原链表做修改，从而实现将原链表反转。
+
+值得一提的是，在原链表的基础上做修改，需要额外借助 2 个指针（假设分别为 beg 和 end）。仍以图 1 所示的链表为例，接下来用就地逆置法实现对该链表的反转：
+\1) 初始状态下，令 beg 指向第一个节点，end 指向 beg->next，如图 16 所示：
+
+
+![就地反转链表的初始状态](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304014829.gif)
+图 16 就地反转链表的初始状态
+
+
+\2) 将 end 所指节点 2 从链表上摘除，然后再添加至当前链表的头部。如图 17 所示：
+
+
+![反转节点2](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304014826.gif)
+图 17 反转节点 2
+
+
+\3) 将 end 指向 beg->next，然后将 end 所指节点 3 从链表摘除，再添加到当前链表的头部，如图 18 所示：
+
+
+![反转节点3](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304014824.gif)
+图 18 反转节点 3
+
+
+\4) 将 end 指向 beg->next，再将 end 所示节点 4 从链表摘除，并添加到当前链表的头部，如图 19 所示：
+
+
+![反转节点 4](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304014821.gif)
+图 19 反转节点 4
+
+
+由此，就实现了对图 1 链表的反转。 
+
+具体实现代码如下：
+
+```c
+link * local_reverse(link * head) {
+    link * beg = NULL;
+    link * end = NULL;
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+    beg = head;
+    end = head->next;
+    while (end != NULL) {
+        //将 end 从链表中摘除
+        beg->next = end->next;
+        //将 end 移动至链表头
+        end->next = head;
+        head = end;
+        //调整 end 的指向，另其指向 beg 后的一个节点，为反转下一个节点做准备
+        end = beg->next;
+    }
+    return head;
+}
+```
+
+#### 10.3 总结
+
+本节仅以无头节点的链表为例，讲解了实现链表反转的 4 种方法。实际上，对于有头节点的链表反转：
+
+- 使用迭代反转法实现时，初始状态忽略头节点（直接将 mid 指向首元节点），仅需在最后一步将头节点的 next 改为和 mid 同向即可；
+- 使用头插法或者就地逆置法实现时，仅需将要插入的节点插入到头节点和首元节点之间即可；
+- 递归法并不适用反转有头结点的链表（但并非不能实现），该方法更适用于反转无头结点的链表。
