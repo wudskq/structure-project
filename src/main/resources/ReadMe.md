@@ -660,7 +660,9 @@
 
   <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220306215336.png" alt="image-20220306215330661" style="zoom: 50%;" />
 
-- 链表判空: 拿到头节点判断headNode的next指针的下一个节点是否为空即可
+- 链表判空: 
+
+  拿到头节点判断headNode的next指针的下一个节点是否为空即可
 
   ```java
       //链表判空
@@ -675,7 +677,9 @@
       }
   ```
 
-- 链表新增数据: 建立辅助指针等于头节点,遍历链表,找到最后一个节点,然后建立pre,next指针链接
+- 链表新增数据:
+
+  建立辅助指针等于头节点,遍历链表,找到最后一个节点,然后建立pre,next指针链接
 
   ```java
   
@@ -700,7 +704,9 @@
       }
   ```
 
-- 链表删除数据(双向链表可实现节点自删除): 建立辅助指针使其等于headNode节点,遍历链表,找到下标等于要删除的节点,拿到要删除节点的pre节点与next节点,使其pre节点的next指针指向deleteNode的next节点,使其next节点的pre指针指向deleteNode节点的pre节点
+- 链表删除数据(双向链表可实现节点自删除): 
+
+  建立辅助指针使其等于headNode节点,遍历链表,找到下标等于要删除的节点,拿到要删除节点的pre节点与next节点,使其pre节点的next指针指向deleteNode的next节点,使其next节点的pre指针指向deleteNode节点的pre节点
 
   ```java
       //删除节点(节点自删除)
@@ -730,7 +736,9 @@
       }
   ```
 
-- 链表更新数据: 建立辅助指针temp使其等于headNode,遍历链表找到temp.getIndex=index的节点,否则temp节点后移,直至找到,找到后数据正常赋值即可
+- 链表更新数据:
+
+  建立辅助指针temp使其等于headNode,遍历链表找到temp.getIndex=index的节点,否则temp节点后移,直至找到,找到后数据正常赋值即可
 
   ```java
    //更新节点数据
@@ -752,7 +760,9 @@
       }
   ```
 
-- 链表查询所有数据: 建立辅助指针使其等于haedNode,无限循环temp节点直至temp.next等于空为止
+- 链表查询所有数据:
+
+  建立辅助指针使其等于haedNode,无限循环temp节点直至temp.next等于空为止
 
   ```java
       //遍历节点
@@ -769,17 +779,152 @@
       }
   ```
 
+### 3.8 链表(单向环形链表)
+
+- 什么是单向循环链表？
+
+  如果把单链表的最后一个节点的指针指向链表头部，而不是指向NULL，那么就构成了一个单向循环链表，通俗讲就是把尾节点的下一跳指向头结点。
+
+- 为什么要使用单向循环链表？
+
+  在单向链表中，头指针是相当重要的，因为单向链表的操作都需要头指针，所以如果头指针丢失或者破坏，那么整个链表都会遗失，并且浪费链表内存空间，因此我们引入了单向循环链表这种数据结构。
+
+  如下图所示：
+
+  ![image-20220307010657477](https://gitee.com/wudskq/cloud_img/raw/master/data/20220307010657.png)
+
+- 环形链表判空
+
+  建立辅助指针temp使其等于headNode,
+
+  判断headNode的next指针是否为空即可
+
+- 环形链表添加数据
+
+  核心思想: 第一次添加数据时,找最后节点,判断headNode的next是否为空,第二次添加数据时,判断temp.next是否等于headNode节点
+
+  建立辅助指针temp使其等于headNode,遍历找到最后一个节点,遍历时分为两种情况
+
+  第一种情况,当链表中第一次添加数据时,判断temp.next指针指向的节点为空即可,若为空则证明找到了最后一个节点,退出循环
+
+  第二种情况,当链表第二次添加数据时,需要判断temp.next是否等于headNode,若等于则证明找到了最后一个节点,退出循环
+
+  统一执行:使其temp.next指向新增节点,新增节点next指针指向headNode节点即可
+
+  ```java
+   //环形链表添加数据
+      public void addCircularNode(CircularNode node){
+          CircularNode temp = headNode;
+          Boolean flag = true;
+          while (flag){
+              //第一次添加数据时,next指针为空代表该节点为链表最后节点
+              if(null == temp.getNext()){
+                  flag = false;
+                  break;
+              }
+              //第二次开始,需要判断该节点的next指针是否指向headNode节点
+              if(temp.getNext().equals(headNode)){
+                  flag = false;
+                  break;
+              }
+              temp = temp.getNext();
+          }
+          //尾部添加数据
+          temp.setNext(node);
+          //尾部链接headNode
+          node.setNext(headNode);
+      }
+  ```
+
+- 环形链表删除数据
+
+  核心思想: 找到要删除节点的上一个节点,与下一个节点,使其上一个节点的next指针指向下一个节点,并将要删除节点的next指针置空
+
+  建立辅助指针temp使其等于headNode,建立next指针等于空
+
+  遍历链表,使其找到要删除节点的上一个节点,使其next等于要删除节点的下一个节点,
+
+  接着要删除节点的next指针置空,要删除节点的上一个节点的next指针指向next
+
+  ```java
+   //环形链表删除数据
+      public void removeCircularNode(int index){
+          isEmpty();
+          CircularNode temp = headNode;
+          Boolean flag = true;
+          CircularNode next = null;
+          while (flag){
+              //找到要删除节点的上一个节点
+              if(index == temp.getNext().getIndex()){
+                  flag = false;
+                  //要删除节点的下一个节点
+                  next = temp.getNext().getNext();
+                  //删除节点的next置空
+                  temp.getNext().setNext(null);
+                  break;
+              }
+              temp = temp.getNext();
+          }
+          //pre节点链接node的next指针节点
+          temp.setNext(next);
+      }
+  ```
+
+- 环形链表更新数据
+
+  建立辅助指针temp使其等于headNode,循环遍历找到index等于temp.index即可
+
+  更新数据
+
+  ```java
+      //环形链表更新数据
+      public void updateCircularNode(CircularNode node){
+          isEmpty();
+          CircularNode temp = headNode;
+          Boolean flag = true;
+          int index = node.getIndex();
+          while (flag){
+              //找到需要更新的节点
+              if(index == temp.getIndex()){
+                  flag = false;
+                  temp.setData(node.getData());
+                  break;
+              }
+              temp = temp.getNext();
+              //代表找遍所有链表节点
+              if(headNode == temp){
+                  System.out.println("下标" + index + "不存在");
+                  break;
+              }
+          }
+      }
+  ```
+
+- 环形链表遍历数据
+
+  核心思想: 判断是否为最后一个节点即可,否则指针后移,
+
+  建立辅助指针temp使其等于headNode,循环遍历使其temp.next等于headNode即可
+
+  ```java
+      //环形链表遍历
+      public void listCircularList(){
+          CircularNode temp = headNode.getNext();
+          Boolean flag = true;
+          while (flag){
+              System.out.println(temp.toString());
+              //判断节点是否为最后一个节点
+              //即判断该节点的next指针是否指向headNode
+              if(headNode == temp.getNext()){
+                  flag = false;
+                  break;
+              }
+              temp = temp.getNext();
+          }
+      }
+  ```
+
   
-
-
-
-
-
-
-
-
-
-
 
 
 
