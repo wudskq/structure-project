@@ -48,13 +48,14 @@ public class CircularLinkedList {
 
 
     //环形链表判空
-    public void isEmpty(){
+    public Boolean isEmpty(){
         if(null == headNode){
-            return;
+            return true;
         }
         if(null == headNode.getNext()){
-            throw new RuntimeException("circularLinkedList is empty!");
+            return  true;
         }
+        return false;
     }
 
 
@@ -125,6 +126,27 @@ public class CircularLinkedList {
                 break;
             }
         }
+    }
+
+    //获取指定位置的节点数据
+    public CircularNode getCircularNode(int index){
+        isEmpty();
+        CircularNode temp = headNode;
+        Boolean flag = true;
+        while (flag){
+            //找到需要更新的节点
+            if(index == temp.getIndex()){
+                flag = false;
+                break;
+            }
+            temp = temp.getNext();
+            //代表找遍所有链表节点
+            if(headNode == temp){
+                System.out.println("下标" + index + "不存在");
+                break;
+            }
+        }
+        return temp;
     }
 
 
