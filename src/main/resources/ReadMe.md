@@ -1,5 +1,3 @@
-
-
 ## JAVA数据结构与算法
 
 ### 1.算法与数据结构的关系
@@ -654,19 +652,124 @@
 
 
 
+### 3.7 链表(双向链表)
 
+- 概念: 节点包括前指针(pre)及后指针(next),链表内存结构呈双向连接
 
+- 原理图
 
+  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220306215336.png" alt="image-20220306215330661" style="zoom: 50%;" />
 
+- 链表判空: 拿到头节点判断headNode的next指针的下一个节点是否为空即可
 
+  ```java
+      //链表判空
+      public void isEmpty(){
+          if(null == headNode){
+              return;
+          }
+          DoubleNode nextNode = headNode.getNext();
+          if(null == nextNode){
+              throw new RuntimeException("doubleLinkedList is empty!");
+          }
+      }
+  ```
 
+- 链表新增数据: 建立辅助指针等于头节点,遍历链表,找到最后一个节点,然后建立pre,next指针链接
 
+  ```java
+  
+      //添加节点
+      public void addDoubleNode(DoubleNode node){
+          DoubleNode temp = headNode;
+          Boolean flag = true;
+          while (flag){
+              //如果temp的next指针等于空
+              //则证明temp为最后一个节点
+              if(null == temp.getNext()){
+                  flag = false;
+                  break;
+              }
+              //否则tmep节点后移
+              temp = temp.getNext();
+          }
+          //next指向新增数据
+          temp.setNext(node);
+          //新增node的pre指针指向temp
+          node.setPre(temp);
+      }
+  ```
 
+- 链表删除数据(双向链表可实现节点自删除): 建立辅助指针使其等于headNode节点,遍历链表,找到下标等于要删除的节点,拿到要删除节点的pre节点与next节点,使其pre节点的next指针指向deleteNode的next节点,使其next节点的pre指针指向deleteNode节点的pre节点
 
+  ```java
+      //删除节点(节点自删除)
+      public void  removeDoubleNode(int index){
+          isEmpty();
+          DoubleNode temp =  headNode;
+          Boolean flag = true;
+          DoubleNode pre = null;
+          DoubleNode next = null;
+          while (flag){
+              int nodeIndex = temp.getIndex();
+              if(nodeIndex == index){
+                  flag = false;
+                  pre = temp.getPre();
+                  next = temp.getNext();
+                  break;
+              }
+              //否则指针后移
+              temp = temp.getNext();
+          }
+          //重新进行指针链接
+          pre.setNext(temp.getNext());
+          next.setPre(temp.getPre());
+          //删除节点的指针置空
+          temp.setPre(null);
+          temp.setNext(null);
+      }
+  ```
 
+- 链表更新数据: 建立辅助指针temp使其等于headNode,遍历链表找到temp.getIndex=index的节点,否则temp节点后移,直至找到,找到后数据正常赋值即可
 
+  ```java
+   //更新节点数据
+      public void updateDoubleNode(DoubleNode node) {
+          isEmpty();
+          DoubleNode temp = headNode;
+          Boolean flag = true;
+          int index = node.getIndex();
+          while (flag) {
+              //已找到要更新的节点
+              if(temp.getIndex() == index){
+                  flag = false;
+                  break;
+              }
+              temp = temp.getNext();
+          }
+          //更新数据
+          temp.setData(node.getData());
+      }
+  ```
 
+- 链表查询所有数据: 建立辅助指针使其等于haedNode,无限循环temp节点直至temp.next等于空为止
 
+  ```java
+      //遍历节点
+      private void listDoubleList() {
+          isEmpty();
+          DoubleNode temp = headNode.getNext();
+          while (true) {
+              System.out.println(temp.toString());
+              temp = temp.getNext();
+              if (null == temp) {
+                  break;
+              }
+          }
+      }
+  ```
+
+  
 
 
 
