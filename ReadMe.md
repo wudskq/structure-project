@@ -1,5 +1,12 @@
 ## JAVA数据结构与算法
 
+### 项目结构说明:
+
+- cn.com.wudskq.algorithm 为算法包
+- cn.com.wudskq.datastructure 为数据结构包
+- 算法包与数据结构包下各自有questionn包,其中写了相关数据结构/算法经典的问题
+- cn.com.wudskq.utils 为工具类包
+
 ### 1.算法与数据结构的关系
 
 - 数据结构: 是一门研究组织数据方式的学,通俗来讲就是研究数据以什么样的方式组织在一起,自动有了编程语言,也就有了数据结构,学好数据结构就可以编写出更高效,更漂亮的代码
@@ -316,9 +323,9 @@
   Connected to the target VM, address: '127.0.0.1:54920', transport: 'socket'
   1
   Exception in thread "main" java.lang.RuntimeException: queue is full!
-  	at cn.com.wudskq.second.datastructure.queue.ArrayImplQueue.isFull(ArrayImplQueue.java:65)
-  	at cn.com.wudskq.second.datastructure.queue.ArrayImplQueue.addQueue(ArrayImplQueue.java:72)
-  	at cn.com.wudskq.second.datastructure.queue.ArrayImplQueue.main(ArrayImplQueue.java:40)
+  	at ArrayImplQueue.isFull(ArrayImplQueue.java:65)
+  	at ArrayImplQueue.addQueue(ArrayImplQueue.java:72)
+  	at ArrayImplQueue.main(ArrayImplQueue.java:40)
   Disconnected from the target VM, address: '127.0.0.1:54920', transport: 'socket'
   ```
 
