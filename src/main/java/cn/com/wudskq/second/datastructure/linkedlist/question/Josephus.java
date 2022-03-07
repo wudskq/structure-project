@@ -36,13 +36,12 @@ public class Josephus {
 
         //存放数据
         List<CircularNode> list = new ArrayList<CircularNode>();
-
+        //获取第k个位置的数据
+        CircularNode circularNode = circularLinkedList.getCircularNode(3);
+        //创建临时节点,用于找到需要踢出的节点
+        CircularNode temp = circularNode;
         Boolean flag = true;
         while (flag) {
-            //获取第k个位置的数据
-            CircularNode circularNode = circularLinkedList.getCircularNode(3);
-            //复制节点,用于找到需要踢出的节点
-            CircularNode temp = circularNode;
             //从第k个位置后移m+1下,因为有headNode节点
             for (int i = 0; i < m+1; i++) {
                 temp = temp.getNext();
