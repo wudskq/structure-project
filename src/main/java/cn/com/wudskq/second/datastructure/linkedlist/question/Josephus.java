@@ -47,7 +47,7 @@ public class Josephus {
                 temp = temp.getNext();
             }
             circularLinkedList.removeCircularNode(temp.getIndex());
-            list.add(temp);/**/
+            list.add(temp);
             if(circularLinkedList.isEmpty()){
                 flag = false;
                 break;
