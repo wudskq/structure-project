@@ -786,7 +786,7 @@
       }
   ```
 
-### 3.8 链表(单向环形链表)
+### 3.8 链表(单向环形链表带头节点)
 
 - 什么是单向循环链表？
 
@@ -931,10 +931,155 @@
       }
   ```
 
-#### 3.8.1 约瑟夫问题(丢手绢问题)
+### 3.9 链表(单向环形链表不带头节点)
 
-- 问题,指定N个人围成一个圈,从K(1<k<N)这个位置开始,每次数M次,输出一个出圈的队列
-- 
+- 什么是单向循环链表？
+
+  如果把单链表的最后一个节点的指针指向链表头部，而不是指向NULL，那么就构成了一个单向循环链表，通俗讲就是把尾节点的下一跳指向头结点。
+
+- 为什么要使用单向循环链表？
+
+  在单向链表中，头指针是相当重要的，因为单向链表的操作都需要头指针，所以如果头指针丢失或者破坏，那么整个链表都会遗失，并且浪费链表内存空间，因此我们引入了单向循环链表这种数据结构。
+
+  如下图所示：
+
+  ![image-20220307010657477](https://gitee.com/wudskq/cloud_img/raw/master/data/20220307010657.png)
+
+- 无头节点添加节点
+
+  核心思想:  创建辅助指针first,用于第一次添加数据时使用,创建current指针用于后面添加数据时使用,创建第一次添加数据标志位,从第二次开始需要指针链接为环形
+
+  代码展示
+
+  ```java
+  /**
+       * first 第一个指针
+       * node  新增的数据
+       * @param node
+       */
+  public void addCircularNode(CircularNode node) {
+    CircularNode current = first;
+    Boolean flag = true;
+    Boolean firstFlag = false;
+    while (flag) {
+      //第一次添加数据时,next指针为空代表该节点为链表最后节点
+      if (null == first) {
+        first = node;
+        //尾部添加数据
+        node.setNext(first);
+        flag = false;
+        break;
+      }
+      //第二次开始,需要判断该节点的next指针是否指向first节点
+      if (current.getNext().equals(first)) {
+        //从第二次开始,标志位更新
+        firstFlag = true;
+        flag = false;
+        break;
+      }
+      //指针后移
+      current = current.getNext();
+    }
+    //第一次添加数据自己构建环形
+    if(firstFlag){
+      //构建环形
+      current.setNext(node);
+      node.setNext(first);
+    }
+  }
+  ```
+
+- 删除数据
+
+  核心思想: 找到要删除节点的上一个节点pre,与下一个节点next,删除要删除的节点后,pre与next指针继续链接成环
+
+  代码
+
+  ```java
+  //环形链表删除数据
+      public void removeCircularNode(int index) {
+          isEmpty();
+          CircularNode temp = first;
+          Boolean flag = true;
+          CircularNode next = null;
+          while (flag) {
+              //找到要删除节点的上一个节点
+              if (index == temp.getNext().getIndex()) {
+                  flag = false;
+                  //要删除节点的下一个节点
+                  next = temp.getNext().getNext();
+                  //删除节点的next置空
+                  temp.getNext().setNext(null);
+                  break;
+              }
+              temp = temp.getNext();
+          }
+          //pre节点链接node的next指针节点
+          temp.setNext(next);
+      }
+  ```
+
+- 更新数据
+
+  核心思想: 创建辅助指针指向first,循环遍历找到index值相等的即可,直到temp.next==first遍历到链表最后即可
+
+  ```java
+   //环形链表更新数据
+      public void updateCircularNode(CircularNode node) {
+          isEmpty();
+          CircularNode temp = first;
+          Boolean flag = true;
+          int index = node.getIndex();
+          while (flag) {
+              //找到需要更新的节点
+              if (index == temp.getIndex()) {
+                  flag = false;
+                  temp.setData(node.getData());
+                  break;
+              }
+              temp = temp.getNext();
+              //代表找遍所有链表节点
+              if (first == temp) {
+                  System.out.println("下标" + index + "不存在");
+                  break;
+              }
+          }
+      }
+  ```
+
+- 遍历链表 
+
+  核心思想: 创建辅助指针指向first,循环遍历即可,直到temp.next==first遍历到链表最后即可
+
+  代码展示
+
+  ```java
+  
+      //环形链表遍历
+      public void listCircularList() {
+          CircularNode temp = first;
+          Boolean flag = true;
+          while (flag) {
+              System.out.println(temp.toString());
+              //判断节点是否为最后一个节点
+              //即判断该节点的next指针是否指向headNode
+              if (first == temp.getNext()) {
+                  flag = false;
+                  break;
+              }
+              temp = temp.getNext();
+          }
+      }
+  
+  ```
+
+#### 3.9.1 约瑟夫问题(丢手绢问题)
+
+- 约瑟夫环（[约瑟夫问题](https://so.csdn.net/so/search?q=约瑟夫问题&spm=1001.2101.3001.7020)）是一个数学的应用问题：已知n个人（以编号1，2，3…n分别表示）围坐在一张圆桌周围。从编号为k的人开始报数，数到m的那个人出列；他的下一个人又从1开始报数，数到m的那个人又出列；依此规律重复下去，直到圆桌周围的人全部出列。
+
+- 图示
+
+  ![image-20220308142648149](/Users/wudskq/Library/Application Support/typora-user-images/image-20220308142648149.png)
 
 
 
