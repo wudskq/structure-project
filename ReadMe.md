@@ -1079,7 +1079,7 @@
 
 - 图示
 
-  ![image-20220308142648149](/Users/wudskq/Library/Application Support/typora-user-images/image-20220308142648149.png)
+  ![image-20220308142648149](https://gitee.com/wudskq/cloud_img/raw/master/data/20220308144123.png)
 
 
 
