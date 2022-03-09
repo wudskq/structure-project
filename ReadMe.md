@@ -997,26 +997,26 @@
 
   ```java
   //环形链表删除数据
-      public void removeCircularNode(int index) {
-          isEmpty();
-          CircularNode temp = first;
-          Boolean flag = true;
-          CircularNode next = null;
-          while (flag) {
-              //找到要删除节点的上一个节点
-              if (index == temp.getNext().getIndex()) {
-                  flag = false;
-                  //要删除节点的下一个节点
-                  next = temp.getNext().getNext();
-                  //删除节点的next置空
-                  temp.getNext().setNext(null);
-                  break;
-              }
-              temp = temp.getNext();
-          }
-          //pre节点链接node的next指针节点
-          temp.setNext(next);
+  public void removeCircularNode(int index) {
+    isEmpty();
+    CircularNode temp = first;
+    Boolean flag = true;
+    CircularNode next = null;
+    while (flag) {
+      //找到要删除节点的上一个节点
+      if (index == temp.getNext().getIndex()) {
+        flag = false;
+        //要删除节点的下一个节点
+        next = temp.getNext().getNext();
+        //删除节点的next置空
+        temp.getNext().setNext(null);
+        break;
       }
+      temp = temp.getNext();
+    }
+    //pre节点链接node的next指针节点
+    temp.setNext(next);
+  }
   ```
 
 - 更新数据
@@ -1024,27 +1024,27 @@
   核心思想: 创建辅助指针指向first,循环遍历找到index值相等的即可,直到temp.next==first遍历到链表最后即可
 
   ```java
-   //环形链表更新数据
-      public void updateCircularNode(CircularNode node) {
-          isEmpty();
-          CircularNode temp = first;
-          Boolean flag = true;
-          int index = node.getIndex();
-          while (flag) {
-              //找到需要更新的节点
-              if (index == temp.getIndex()) {
-                  flag = false;
-                  temp.setData(node.getData());
-                  break;
-              }
-              temp = temp.getNext();
-              //代表找遍所有链表节点
-              if (first == temp) {
-                  System.out.println("下标" + index + "不存在");
-                  break;
-              }
-          }
+  //环形链表更新数据
+  public void updateCircularNode(CircularNode node) {
+    isEmpty();
+    CircularNode temp = first;
+    Boolean flag = true;
+    int index = node.getIndex();
+    while (flag) {
+      //找到需要更新的节点
+      if (index == temp.getIndex()) {
+        flag = false;
+        temp.setData(node.getData());
+        break;
       }
+      temp = temp.getNext();
+      //代表找遍所有链表节点
+      if (first == temp) {
+        System.out.println("下标" + index + "不存在");
+        break;
+      }
+    }
+  }
   ```
 
 - 遍历链表 
@@ -1054,23 +1054,21 @@
   代码展示
 
   ```java
-  
-      //环形链表遍历
-      public void listCircularList() {
-          CircularNode temp = first;
-          Boolean flag = true;
-          while (flag) {
-              System.out.println(temp.toString());
-              //判断节点是否为最后一个节点
-              //即判断该节点的next指针是否指向headNode
-              if (first == temp.getNext()) {
-                  flag = false;
-                  break;
-              }
-              temp = temp.getNext();
-          }
+  //环形链表遍历
+  public void listCircularList() {
+    CircularNode temp = first;
+    Boolean flag = true;
+    while (flag) {
+      System.out.println(temp.toString());
+      //判断节点是否为最后一个节点
+      //即判断该节点的next指针是否指向headNode
+      if (first == temp.getNext()) {
+        flag = false;
+        break;
       }
-  
+      temp = temp.getNext();
+    }
+  }
   ```
 
 #### 3.9.1 约瑟夫问题(丢手绢问题)
@@ -1081,19 +1079,151 @@
 
   ![image-20220308142648149](https://gitee.com/wudskq/cloud_img/raw/master/data/20220308144123.png)
 
+### 3.10 栈(线性数据结构)
 
+- 栈是一种运算受限的线性表,数据的操作只能在头部或尾部
 
+- 限定仅在表尾进行插入和删除操作的线性表。这一端被称为栈顶，相对地，把另一端称为栈底
 
+- 栈的最大特性为先进后出FIFO(First input Last Out)
 
+- 逻辑结构图
 
+  ![image-20220310033306379](https://gitee.com/wudskq/cloud_img/raw/master/data/20220310033312.png)
 
+  ![image-20220310035334623](https://gitee.com/wudskq/cloud_img/raw/master/data/20220310035334.png)
 
+  - 初始化栈
 
+    核心思想: 定义栈中实际存储数据的数组,定义栈的最大容量stackMaxSize,定义栈的栈顶指针stackTop,定义栈的栈底指针stackBottom
 
+    代码实现:
 
+    ```java
+    private Object[] array;
+    
+    //栈顶
+    private int stackTop;
+    
+    //栈底
+    private int stackBottom;
+    
+    //栈容量大小
+    private int stackSize; 
+    //初始化栈
+    public ArrayImplStack(int size){
+      this.stackSize = size;
+      array = new Object[stackSize];
+      stackTop = -1;
+      stackBottom = 0;
+    }
+    ```
 
+  - 对栈进行判空 即栈顶指针下标未移动时栈即就是空
 
+    代码实现:
 
+    ```java
+    //判断栈中是否有数据
+    public Boolean isEmpty(){
+      if(stackTop == -1){
+        return true;
+      }
+      return false;
+    }
+    ```
+
+  - 对栈进行判断是否已满: 即栈顶指针下标等于栈顶最大容量时即栈满
+
+    代码实现
+
+    ```java
+    //判断栈容量是否已满
+    //此处若栈顶指针初始化时为0,栈底指针初始化时为0
+    //则无法判断栈是否已满还是为空,此处栈顶初始化时设置为-1用来区分
+    public Boolean isFull(){
+      if(stackTop+1 == stackSize){
+        return true;
+      }
+      return false;
+    }
+    ```
+
+  - 入栈操作
+
+    核心思想: 入栈时即就是栈顶下标上移即可,同时需要在数据入栈前判断栈容量是否已满
+
+    代码实现:
+
+    ```java
+    //入栈
+    public void push(Object data){
+      //入栈时
+      if(isFull()){
+        throw new RuntimeException("stack is full!");
+      }
+      //栈顶上移
+      stackTop = (stackTop+1)%stackSize;
+      array[stackTop] = data;
+    }
+    ```
+
+  - 出栈操纵
+
+    核心思想: 出栈时即栈顶下标下移即可,同时需要在出栈时判断栈是否为空
+
+    代码实现
+
+    ```java
+    //出栈
+    public Object pop(){
+      if(isEmpty()){
+        throw new RuntimeException("stack is empty!");
+      }
+      Object data = array[stackTop];
+      //栈顶下移
+      stackTop = (stackTop-1)%stackSize;
+      return data;
+    }
+    ```
+
+  - 获取栈中所有数据
+
+    核心思想: 获取栈的容量大小,根据大小进行遍历,通过栈顶下标取到对应的数据,同时栈顶下标需要下移,
+
+    注意事项: 因为栈在遍历完成后,栈顶指针此时已更改为初始化值,会影响后续的出栈操作,需要借助复制指针先保存栈顶下标
+
+    待遍历完成后,通过辅助指针恢复栈顶下标
+
+    代码实现:
+
+    ```java
+    //获取栈中所有数据
+    //此操作仅仅是获取数据,不能实际移动栈顶指针
+    public List<Object> getStackALl(){
+      //定义辅助指针,遍历完数据后,
+      int pointer = stackTop;
+      if(isEmpty()){
+        throw new RuntimeException("stack is empty!");
+      }
+      ArrayList<Object> data = new ArrayList<>();
+      for (int i = 0; i < stackSize ; i++) {
+        Object temp = array[stackTop];
+        //取出数据后,栈顶指针下移
+        stackTop = (stackTop-1)%stackSize;
+        data.add(temp);
+      }
+      //复原栈顶指针位置
+      stackTop = pointer;
+      return data;
+    }
+    ```
+
+    
+
+    
+
+  
 
 
 
