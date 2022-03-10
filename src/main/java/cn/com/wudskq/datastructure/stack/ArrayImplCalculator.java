@@ -7,7 +7,7 @@ import java.util.HashMap;
  * @author chenfangchao
  * @version 1.0.0
  * @ClassName ArrayImplCalculator.java
- * @Description TODO 使用栈实现综合计算器
+ * @Description TODO 使用栈实现综合计算器(中缀表达式)
  * @createTime 2022年03月10日 10:15:00
  */
 @Data
