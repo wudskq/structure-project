@@ -4,7 +4,7 @@ package cn.com.wudskq.datastructure.linkedlist;
  * @author chenfangchao
  * @version 1.0.0
  * @ClassName DoubleLinkedList.java
- * @Description TODO
+ * @Description TODO 双向链表
  * @createTime 2022年03月06日 22:24:00
  */
 

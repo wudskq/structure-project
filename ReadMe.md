@@ -1219,35 +1219,159 @@
     }
     ```
 
+
+#### 3.10.1 栈实现表达式计算(计算10以下数据)
+
+- 核心思想:
+
+  - 把表达式转换为数组, 创建临时指针Index,循环遍历进行扫描数据
+
+  - 创建两个栈,一个为数据盏(NumberStack),一个为符号栈(SymbolStack)
+
+  - 在循环遍历中,Index指针向右移动,在获取数组下标数据中,判断为数据还是为符号,数据入数据栈,符号入符号栈
+
+    在入符号栈过程中需要进行判断符号优先级情况
+
+    - 如果当前符号小于等于符号栈栈顶符号的优先级,则从数据栈pop出两个数据,符号栈pop弹出栈顶符号
+
+      数据栈中的第二个pop出的数据与第一个pop出的数据,利用符号栈pop弹出栈顶符号进行运算并push进入数据栈,
+
+      接着把当前符号存入符号栈
+
+    - 如果当前符号大于符号栈栈顶符号的优先级,则符号push进符号栈
+
+    - 当表达式扫描完毕,就顺序的从数据栈与符号栈中pop出数据,数据栈pop出2个数据,符号栈pop出1个数据
+
+    - 最后数据栈中的最后一个数即为表达式的结果
+
+- 图示解析如下: a1-a2-a3-a4-a5-a6-a7
+
+  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220310112943.png" alt="image-20220310112943090" style="zoom: 50%;" />
+
+  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220310113023.png" style="zoom: 55%;" />
+
+  - 代码实现
+
+    ```java
+    /**
+     * @author chenfangchao
+     * @version 1.0.0
+     * @ClassName ArrayImplCalculator.java
+     * @Description TODO 使用栈实现综合计算器
+     * @createTime 2022年03月10日 10:15:00
+     */
+    @Data
+    public class ArrayImplCalculator {
     
+      //计算表达式
+      private String cron;
+    
+      //指针
+      private int index;
+    
+      //操作符
+      private String operator = "+,-,*,/";
+    
+      //操作运算符优先级
+      private HashMap<String, Integer> hashMap;
+    
+      //数据栈
+      private ArrayImplStack numberStack;
+    
+      //符号栈
+      private ArrayImplStack symbolStack;
+    
+      //初始化
+      public ArrayImplCalculator() {
+        this.index = 0;
+        this.numberStack = new ArrayImplStack(100);
+        this.symbolStack = new ArrayImplStack(100);
+        this.hashMap = new HashMap<>(10);
+        hashMap.put("+", 0);
+        hashMap.put("-", 0);
+        hashMap.put("*", 1);
+        hashMap.put("/", 1);
+      }
+    
+    
+      public static void main(String[] args) {
+        ArrayImplCalculator calculator = new ArrayImplCalculator();
+        //16 4
+        System.out.println(calculator.execCalculation("5*5-20/5+9+19-10"));
+    
+      }
+    
+      //执行表达式计算操作
+      public int execCalculation(String cron) {
+        char[] datas = cron.toCharArray();
+        //遍历操作表达式
+        for (int index = 0; index < datas.length; index++) {
+          //当前数据
+          String data = String.valueOf(datas[index]);
+          //判断是否为运算符号,运算符号入符号栈
+          if (operator.contains(data)) {
+            //先判断符号栈是否为空,为空直接入栈
+            if (symbolStack.isEmpty()) {
+              symbolStack.push(data);
+            } else {
+              //栈顶运算符
+              String topOperator = String.valueOf(symbolStack.pop());
+              //计算栈顶运算符优先级
+              Integer topOperatorLevel = hashMap.get(topOperator);
+              //计算当前的运算符优先级
+              Integer operatorLevel = hashMap.get(data);
+    
+              //判断当前运算符与栈顶运算符优先级
+              //如果当前运算符级别小于等于栈顶运算符级别
+              if (operatorLevel <= topOperatorLevel) {
+                Integer number1 = Integer.valueOf(String.valueOf(numberStack.pop()));
+                Integer number2 = Integer.valueOf(String.valueOf(numberStack.pop()));
+                Integer result = handleData(number1, topOperator, number2);
+                //计算的结果入数据栈
+                numberStack.push(result);
+                //当前运算符入符号栈
+                symbolStack.push(data);
+              } else {
+                //如果当前运算符优先级大于栈顶运算符优先级,则当前运算符直接入符号栈
+                symbolStack.push(data);
+              }
+            }
+          } else {
+            //反之直接入数据栈
+            numberStack.push(data);
+          }
+        }
+        //遍历完成之后,获取符号栈最后一个操作符,弹出数据栈中的两个数,
+        String operator = String.valueOf(symbolStack.pop());
+        Integer number1 = Integer.valueOf(String.valueOf(numberStack.pop()));
+        Integer number2 = Integer.valueOf(String.valueOf(numberStack.pop()));
+        Integer result = handleData(number1, operator, number2);
+        Integer number3 = Integer.valueOf(String.valueOf(numberStack.pop()));
+        int res = handleData(result, operator, number3);
+        return res;
+      };
+    
+      //判断运算符,进行数据处理
+      public Integer handleData(Integer number1, String operator, Integer number2) {
+        Integer result = null;
+        if ("+".equals(operator)) {
+          result = number2 + number1;
+        }
+        if ("-".equals(operator)) {
+          result = number2 - number1;
+        }
+        if ("*".equals(operator)) {
+          result = number2 * number1;
+        }
+        if ("/".equals(operator)) {
+          result = number2 / number1;
+        }
+        return result;
+      }
+    }
+    ```
 
     
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

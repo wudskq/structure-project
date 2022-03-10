@@ -7,7 +7,7 @@ import java.util.List;
  * @author chenfangchao
  * @version 1.0.0
  * @ClassName ArrayImplAnnularQueue.java
- * @Description TODO 数组实现环形队列
+ * @Description TODO 环形数组实现环形队列
  * @createTime 2022年02月28日 01:28:00
  */
 

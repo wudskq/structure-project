@@ -4,7 +4,7 @@ package cn.com.wudskq.datastructure.sparsearray;
  * @author chenfangchao
  * @version 1.0.0
  * @ClassName sparseArrayImpl.java
- * @Description TODO 稀疏数组实现
+ * @Description TODO 稀疏数组实现五子棋盘
  * @createTime 2022年02月25日 00:24:00
  */
 

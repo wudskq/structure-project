@@ -8,7 +8,7 @@ import cn.com.wudskq.datastructure.linkedlist.CircularHeadNodeLinkedList;
  * @author chenfangchao
  * @version 1.0.0
  * @ClassName Josephus.java
- * @Description TODO
+ * @Description TODO 约瑟夫问题
  * @createTime 2022年03月07日 01:57:00
  */
 
