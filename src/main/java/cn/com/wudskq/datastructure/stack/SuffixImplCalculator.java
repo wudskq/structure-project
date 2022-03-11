@@ -22,7 +22,7 @@ public class SuffixImplCalculator {
 
 
     public static void main(String[] args) {
-        String data = "2-(3+3)*3+8";
+        String data = "3+4+(1*3)+8-9";
         InfixToSuffix infixToSuffix = new InfixToSuffix();
         //转换为后缀表达式
         String convert = infixToSuffix.convert(data);
