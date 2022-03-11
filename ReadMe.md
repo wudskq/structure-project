@@ -1536,21 +1536,35 @@
 
   至此整个转换过程完成
 
+### 3.11.0 递归(recursion)
 
+- 递归，就是在运行的过程中调用自己。
 
+  构成递归需具备的条件：
 
+  \1. 子问题须与原始问题为同样的事，且更为简单；
 
+  \2. 不能无限制地调用本身，须有个出口，化简为非递归状况处理。
 
+- 简单代码示例
 
+  ```java
+  public static void main(String[] args) {
+    recursion1(6);
+  }
+  
+  //打印问题
+  public static void recursion1(int n){
+    if(n>1){
+      recursion1(n-1);
+    }
+    System.out.println(n);
+  }
+  ```
 
+- 运行内存结构图
 
-
-
-
-
-
-
-
+  ![image-20220312014447653](https://gitee.com/wudskq/cloud_img/raw/master/data/20220312014447.png)
 
 
 
