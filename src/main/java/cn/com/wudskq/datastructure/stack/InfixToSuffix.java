@@ -35,7 +35,8 @@ public class InfixToSuffix {
 
 
     public static void main(String[] args) {
-        //a b c * + d e * f  + g * +
+        //eg:
+        //中缀表达式： 1+2*3+(4*5+6)*7 对应的后缀表示式 a b c * + d e * f  + g * +
         String infixData = "1+2*3+(4*5+6)*7";
         InfixToSuffix infixToSuffix = new InfixToSuffix();
         System.out.println(infixToSuffix.convert(infixData));
@@ -71,8 +72,9 @@ public class InfixToSuffix {
                             else {
                                 //不为空则进行出栈
                                 String pop = operatorStack.pop();
-                                //即左括号只出栈不进行数据链接
-                                if (getOperatorLevel(pop) != 2) { data = data + pop; }}
+                                //进行数据链接
+                                data = data + pop;
+                            }
                         }
                         //右括号不入栈,待数据弹出完成后,当前操作符push进入操作符栈
                         if (currentLevel != 3) {operatorStack.push(item);}}
