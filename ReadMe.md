@@ -1435,13 +1435,27 @@
 
 #### 3.11.1 逆波兰表达式实现计算器
 
+- 核心思想: 
 
+  从左至右扫描表达式,遇到数字时,将数据push进入堆栈,遇到运算符时弹出栈顶数据与次顶数据,
 
+  使用次顶数据配合运算符与栈顶数据进行运算,并将结果push进入栈中,重复上述步骤
 
+- 后缀表达式：9 3 1-3*+ 10 2/+
 
+  规则：从左到右遍历表达式的每个数字和符号，遇到是数字就进栈，遇到是符号，就将处于栈顶两个数字出栈，进行运算，运算结果进栈，一直到最终获得结果。
 
+  图解:
 
+  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220311170538.png" alt="image-20220311170533493" style="zoom:50%;" />
 
+  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220311170559.png" alt="image-20220311170559645" style="zoom:50%;" />
+
+<img src="/Users/wudskq/Library/Application Support/typora-user-images/image-20220311170625162.png" alt="image-20220311170625162" style="zoom:50%;" />
+
+<img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220311170658.png" alt="image-20220311170658532" style="zoom:50%;" />
+
+<img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220311170713.png" alt="image-20220311170713281" style="zoom:50%;" />
 
 #### 3.11.2 中缀表达式转后缀表达式
 
