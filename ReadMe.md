@@ -1546,6 +1546,10 @@
 
   \2. 不能无限制地调用本身，须有个出口，化简为非递归状况处理。
 
+- 规则:
+
+  ![iShot2022-03-13 15.03.05](https://gitee.com/wudskq/cloud_img/raw/master/data/20220313150318.jpg)
+
 - 简单代码示例
 
   ```java
@@ -1564,7 +1568,129 @@
 
 - 运行内存结构图
 
-  ![image-20220312014447653](https://gitee.com/wudskq/cloud_img/raw/master/data/20220312014447.png)
+  ![image-20220313145759127](https://gitee.com/wudskq/cloud_img/raw/master/data/20220313145804.png)
+
+### 3.11.1递归经典问题
+
+![iShot2022-03-13 15.04.56](https://gitee.com/wudskq/cloud_img/raw/master/data/20220313150507.jpg)
+
+- 迷宫回溯问题:
+
+  问题概述: 有一个由二维数据组成的迷宫,其中1代表围墙,0代表迷宫可行走的空间,我们规定起点为迷宫的左上角,终点为迷宫的右下角,有一棋子从迷宫左上角出发,请使用递归找出该棋子从起点到终点的最短路径
+
+- 实现思路: 先创建地图,接着在实例化墙,而后在使用递归解决迷宫回溯问题
+
+- 简单代码示例:
+
+  实例化地图:
+
+  ```java
+  //地图 1表示为墙 0表示可空白区域
+  private int[][] map;
+  
+  public MazeRecall(){
+    //实例化迷宫
+    this.map = new int[8][7];
+  }
+  ```
+
+  创建墙:
+
+  ```java
+  //实例化墙
+  public void initWall(){
+    //创建墙
+    for (int i = 0; i < map.length; i++) {
+      //第一行和最后一行所有列都为墙
+      if(i==0 || i==7){
+        for (int j = 0; j < map[i].length ; j++) {
+          map[i][j] = 1;
+        }
+      }else {
+        //其余都为墙
+        for (int j = 0; j < map[i].length ; j++) {
+          map[i][0] = 1;
+          map[i][6] = 1;
+          //在第四行设置凸出的墙
+          if(i==3){ map[i][1] = 1;map[i][2] = 1;}
+        }
+      }}
+  }
+  ```
+
+  打印地图:
+
+  ```java
+  //打印地图
+  public void printMap(){
+    for (int i = 0; i < map.length; i++) {
+      for (int j = 0; j < map[i].length ; j++) {
+        int item = map[i][j];
+        System.out.printf("\t" + item);
+      }
+      System.out.println();
+    }
+  }
+  ```
+
+  迷宫回溯:
+
+  ```java
+  /**
+       * 获取可走路线
+       *
+       * @param map 实例地图
+       * @param i   index i
+       * @param j   index j
+       * @return 找到返回true, 未找到返回false
+       */
+  //约定: (i,j)表示从地图哪个位置出发map[1][1]
+  //约定: 小球如果找到map[6][5]代表已找到
+  //约定: 当map[i][j]为0时代表该点没有走过,当map[i][j]为1时代表墙
+  //约定: 当map[i][j]为2时表示通路,当map[i][j]为3时代表该路不通
+  //约定: 在走迷宫时需要确定棋子行走策略: 下-右-上-左,若该点走不通则进行回溯
+  public Boolean getSeaWay(int[][] map, int i, int j) {
+    //代表已找到路线
+    if (map[6][5] == 2) {
+      return true;
+    } else {
+      //如果这个点还没被棋子走过
+      if (map[i][j] == 0) {
+        //按照策略走 下-右-上-左 假定该点为通路开始执行策略
+        map[i][j] = 2;
+        if (getSeaWay(map, i + 1, j)) {
+          return true;
+        } else if (getSeaWay(map, i, j + 1)) {
+          return true;
+        } else if (getSeaWay(map, i - 1, j)) {
+          return true;
+        } else if (getSeaWay(map, i, j - 1)) {
+          return true;
+        } else {
+          map[i][j] = 3;
+          return false;
+        }
+        //否则该点可能为1,2,3
+      } else {
+        return false;
+      }
+    }
+  }
+  ```
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
