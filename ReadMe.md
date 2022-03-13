@@ -1574,9 +1574,9 @@
 
 ![iShot2022-03-13 15.04.56](https://gitee.com/wudskq/cloud_img/raw/master/data/20220313150507.jpg)
 
-- 迷宫回溯问题:
+#### 3.11.2 迷宫回溯问题:
 
-  问题概述: 有一个由二维数据组成的迷宫,其中1代表围墙,0代表迷宫可行走的空间,我们规定起点为迷宫的左上角,终点为迷宫的右下角,有一棋子从迷宫左上角出发,请使用递归找出该棋子从起点到终点的最短路径
+问题概述: 有一个由二维数据组成的迷宫,其中1代表围墙,0代表迷宫可行走的空间,我们规定起点为迷宫的左上角,终点为迷宫的右下角,有一棋子从迷宫左上角出发,请使用递归找出该棋子从起点到终点的最短路径
 
 - 实现思路: 先创建地图,接着在实例化墙,而后在使用递归解决迷宫回溯问题
 
@@ -1678,25 +1678,128 @@
   }
   ```
 
+#### 3.11.3 八皇后问题(递归回溯法)
+
+- 问题概述: 在8*8的棋盘上摆上八个皇后,使其不能互相攻击(即任意两个皇后都不能处于同一行,同一列,同一斜线上,问有多少种摆法)
+
+- 递归回溯法:
+
+  当我们选择了第一个皇后的位置之后，与其处于同行同列同斜线的位置便都无法被选择，
+
+  第二个皇后只能放在未被第一个皇后所辐射到的位置上，
+
+  接着放置第三个皇后，同样不能放在被前两个皇后辐射到的位置上，
+
+  若此时已经没有未被辐射的位置能够被选择，也就意味着这种摆法是不可行的，我们需要回退到上一步，
+
+  给第二个皇后重新选择一个未被第一个皇后辐射的位置，
+
+  再来看是否有第三个皇后可以摆放的位置，
+
+  如还是没有则再次回退至选择第二个皇后的位置，若第二个皇后也没有更多的选择则回退到第一个皇后，重新进行位置的选择。
+
+- 图示:
+
+  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220313190530.jpg" alt="iShot2022-03-13 19.05.22" style="zoom:50%;" />
+
+- 核心思想:
+
+  - 八皇后问题棋盘常规思路来说需要使用二维数组创建棋盘,我们可以使用一维数组来实现
+  - Int [] array = {0,2,3,5,6,1,7,4};
+
+  - 一维数组下标(Index+1)代表行数,一维数组(Value+1)代表列数
+  - 判断是否冲突,即判断是否在同一列或同一斜线即可,因为n为第几行是为递增变化的
+  - 代码示例:
+
+  ```java
+  package cn.com.wudskq.datastructure.recursion;
+  
+  import lombok.Data;
+  
+  /**
+   * @author chenfangchao
+   * @version 1.0.0
+   * @ClassName EightQueens.java
+   * @Description TODO 八皇后问题
+   * @createTime 2022年03月13日 19:20:00
+   */
+  @Data
+  public class EightQueens {
+  
+    private int maxSize=8;
+  
+    //存放8皇后摆放位置结果
+    private int[] array;
+  
+    //计数
+    private int count;
+  
+    //方法调用次数
+    private int judgeCount;
+  
+    public EightQueens(){
+      this.array = new int[maxSize];
+    }
+  
+    public static void main(String[] args) {
+      EightQueens queens = new EightQueens();
+      queens.check(0);
+      System.out.println("一共"+queens.getCount()+"种解法");
+      System.out.println("一共调用方法"+queens.getJudgeCount()+"次");
+    }
+  
+  
+    //放置第n个皇后
+    //递归时每个check方法内部都会调用for循环maxSize次
+    public void check(int n){
+      if(n == maxSize){
+        printf();
+        count ++;
+        return;
+      }
+      //反之依次放入皇后,并判断是否冲突
+      for (int i = 0; i < maxSize ; i++) {
+        //先把第n个皇后放置n行的第1列
+        array[n] = i;
+        //判断是否冲突
+        if(judge(n)){ //不冲突
+          check(n+1);
+        }
+        //如果冲突,就把第n个皇后放在同行的下一列
+      }
+    }
+  
+    //判断当前放置的皇后位置是否与其他已摆放皇后位置冲突 n为第几个皇后可以理解为要摆放的
+    //冲突条件 不能为一行 不能为一列 不能在一条斜线上
+    //不用判断是否在同一行,原因:每次都是往不同行数摆放皇后
+    public boolean judge(int n){
+      judgeCount ++;
+      for (int i = 0; i < n ; i++) {
+        //判断是否在同一列,同一斜线
+        //同一斜线判断算法为 第n行减去第i行的绝对值是否等于第n行的列值减去第i行第列值的绝对值
+        //即可将看作为判断是否为一个等腰直角三角形
+        //判断它的高和宽是否相等,若相等即为等腰直角三角形,等腰直角三角形的斜边即为对角线
+        if(array[i] == array[n] || Math.abs(n-i) == Math.abs(array[n] - array[i])){
+          return false;
+        }
+      }
+      return true;
+    }
+  
+  
+    //输出皇后摆放位置结果
+    public void printf(){
+      for (int i = 0; i < array.length; i++) {
+        System.out.print(array[i]+" ");
+      }
+      System.out.println();
+    }
+  }
+  ```
+
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 
 
 
