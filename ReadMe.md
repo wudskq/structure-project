@@ -1854,6 +1854,52 @@
 
 ![image-20220315165330592](https://gitee.com/wudskq/cloud_img/raw/master/data/20220315165330.png)
 
+4.代码实例:
+
+```java
+//冒泡排序
+public class BubbleSort{
+   private int[] array;
+   //走几趟
+   public void  bubbleSort(int[] array){
+        //每趟比对几次
+        for (int i = 0; i < array.length-1; i++) {
+            for (int j = 0; j < array.length-1-i; j++) {
+                if(array[j]>array[j+1]){
+                    int temp = array[i];
+                    array[j] = array[j+1];
+                    array[j+1] = temp;
+                }
+            }
+        }
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### 10.引用
 
 #### 10.1 迭代反转链表
