@@ -1,5 +1,9 @@
 package cn.com.wudskq.algorithm.sort;
 
+import cn.com.wudskq.utils.RandomArrayUtils;
+
+import java.util.Date;
+
 /**
  * @author chenfangchao
  * @version 1.0.0
@@ -15,13 +19,10 @@ public class BubbleSort {
         int[] array = {0, -1, -3, -4, 8, 7, 6};
         BubbleSort bubbleSort = new BubbleSort();
         bubbleSort.sort(array);
-//        bubbleSort.sort1(array);
-//        bubbleSort.sort2(array);
-//        bubbleSort.sort3(array);
-//        bubbleSort.sort4(array);
-//        bubbleSort.sort5(array);
-//        bubbleSort.sort6(array);
-        bubbleSort.list(array);
+        int[] ints = RandomArrayUtils.randomArray();
+        System.out.println("排序前"+ new Date());
+        int[] res =  bubbleSort.sort(ints);
+        System.out.println("排序后"+new Date());
     }
 
 
