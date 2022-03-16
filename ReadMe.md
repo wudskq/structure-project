@@ -1876,11 +1876,47 @@ public class BubbleSort{
 }
 ```
 
+#### 5.1.1 选择排序
 
+概念: 按照指定规则选出某一元素,再依据规定交换位置后达到排序的目的
 
+核心思想: 
 
+- 第一步:从Index=0开始遍历找到array.lenght,找到最小值后记录其Index,与其Index=0进行交换
+- 第二步: 从Index=1开始遍历找到array.lenght-1,找到最小值后记录其Index,与其Index=0进行交换
+- 第二步: 从Index=2开始遍历找到array.lenght-1-1,找到最小值后记录其Index,与其Index=0进行交换
+- 抽象出以上步骤
+  - 即为从Index=0开始遍历找到array.lenght-1,找到最小值后记录其Index,与其Index=0进行交换(第几趟)
+  - 嵌套循环中从Index=i+1开始遍历找到array.lenght,找到最小值后记录其Index与Data,与其Index=i进行交换(一趟判断几次)
 
+- 实例代码:
 
+```java
+public static int[] selectSort(int[] array) {
+  //n躺
+  for (int i = 0; i < array.length - 1; i++) {
+    //假定第i个为最小值
+    int minData = array[i];
+    int minIndex= i;
+    //第n躺循环判断j次
+    //判断假定值是否为最小值
+    for (int j = i+1; j < array.length; j++) {
+      if(minData>array[j]){
+        //最小值等于Index=j
+        minData = array[j];
+        //需要交换的下标
+        minIndex = j;
+      }
+    }
+    //说明最小值就是array[i],则不需要交换
+    if(minIndex != i){
+      array[minIndex] = array[i];
+      array[i] = minData;
+    }
+  }
+  return array;
+}
+```
 
 
 
