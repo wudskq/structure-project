@@ -1883,11 +1883,19 @@ public class BubbleSort{
 核心思想: 
 
 - 第一步:从Index=0开始遍历找到array.lenght,找到最小值后记录其Index,与其Index=0进行交换
-- 第二步: 从Index=1开始遍历找到array.lenght-1,找到最小值后记录其Index,与其Index=0进行交换
-- 第二步: 从Index=2开始遍历找到array.lenght-1-1,找到最小值后记录其Index,与其Index=0进行交换
+
+- 第二步: 从Index=1开始遍历找到array.lenght-1,找到最小值后记录其Index,与其Index=1进行交换
+
+- 第二步: 从Index=2开始遍历找到array.lenght-1-1,找到最小值后记录其Index,与其Index=2进行交换
+
 - 抽象出以上步骤
+
   - 即为从Index=0开始遍历找到array.lenght-1,找到最小值后记录其Index,与其Index=0进行交换(第几趟)
   - 嵌套循环中从Index=i+1开始遍历找到array.lenght,找到最小值后记录其Index与Data,与其Index=i进行交换(一趟判断几次)
+
+- 图示:
+
+  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220317021130.jpg" alt="iShot2022-03-17 02.11.14" style="zoom:50%;" />
 
 - 实例代码:
 
