@@ -1,6 +1,9 @@
 package cn.com.wudskq.algorithm.sort;
 
+import cn.com.wudskq.utils.RandomArrayUtils;
+
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * @author chenfangchao
@@ -16,6 +19,10 @@ public class ShellSort1 {
     public static void main(String[] args) {
         shellSort1(array);
         System.out.println(Arrays.toString(array));
+        int[] ints = RandomArrayUtils.randomArray();
+        System.out.println("排序前"+ new Date());
+        shellSort1(ints);
+        System.out.println("排序后"+new Date());
     }
 
 
@@ -30,6 +37,7 @@ public class ShellSort1 {
             for (int groupIndex = step; groupIndex < array.length; groupIndex++) {
                 //对根据步长分组的每组数据进行交换排序
                 for (int k = groupIndex - step; k >= 0; k -= step) {
+                    //如果后面数大于前面数进行交换
                     if(array[k] > array[k+step]){
                         int temp = array[k];
                         array[k] = array[k+step];
