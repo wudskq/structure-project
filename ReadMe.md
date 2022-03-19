@@ -1963,7 +1963,7 @@ public static int[] selectSort(int[] array) {
 
 <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220319220404.png" alt="image-20220319220404509" style="zoom:50%;" />
 
-#### 5.1.3 希尔排序(交换法)
+#### 5.1.3 希尔排序
 
 - 基本思想:通过不断把原始数据分组,对分组后的数据进行排序,直到不能分组为
 

@@ -12,12 +12,12 @@ import java.util.Date;
  * @Description TODO 希尔排序(交换法)
  * @createTime 2022年03月19日 23:13:00
  */
-public class ShellSort1 {
+public class ShellSort {
 
     private static int[] array = {8,9,1,7,2,3,5,4,6,0};
 
     public static void main(String[] args) {
-        shellSort1(array);
+        shellSort2(array);
         System.out.println(Arrays.toString(array));
         int[] ints = RandomArrayUtils.randomArray();
         System.out.println("排序前"+ new Date());
@@ -43,6 +43,27 @@ public class ShellSort1 {
                         array[k] = array[k+step];
                         array[k+step] = temp;
                     }
+                }
+            }
+        }
+    }
+
+    //希尔排序-快速排序
+    public static void shellSort2(int[] array) {
+        //对分组步长不断更新
+        for (int step = array.length / 2; step > 0; step /= 2) {
+            //对数据设置步长,进行分组
+            //分组的下标位置
+            for (int groupIndex = step; groupIndex < array.length; groupIndex++) {
+                int i = groupIndex;
+                int data = array[i];
+                //判断每组数据中大的index是否小于小的index
+                if(array[i] < array[i-step]){
+                    while (i -step >=0 && data < array[i-step]){
+                        array[i] = array[i-step];
+                        i -= step;
+                    }
+                    array[i] = data;
                 }
             }
         }
