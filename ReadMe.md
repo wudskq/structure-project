@@ -1926,7 +1926,42 @@ public static int[] selectSort(int[] array) {
 }
 ```
 
+#### 5.1.2 插入排序
 
+- 概念: 插入排序是将无序数据进行遍历并依次与有序数组中的元素进行比较,直到无序数据为空为止
+
+  基本思想：每一步将一个待排序的数据插入到前面已经排好序的有序序列中，直到插完所有元素为止
+
+- 核心思想:
+
+  - 遍历数组,在遍历过程中循环比较,
+  - 依次比较无序列表中数据与有序列表中的数据大小,如果无序列表中的数据比有序列表中的数据大,则将无序列表中数据享有盛誉移动一位,直到不满足此比较条件
+
+- 核心代码:
+
+  ```java
+  //插入排序
+  public static void insertSort(int[] array){
+    for (int i = 1; i < array.length; i++) {
+      //定义要插入的数
+      int insertData = array[i];
+      //要插入的下标(为要插入数的前一个数的下标)
+      int insertIndex = i-1;
+      //如果插入的下标大于等于0且插入的数据小于前一个位置的数
+      while (insertIndex >=0 && insertData < array[insertIndex]){
+        //则将前一个位置的数后移
+        array[insertIndex + 1] = array[insertIndex];
+        //插入的下标+1
+        insertIndex--;
+      }
+      array[insertIndex+1] = insertData;
+    }
+  }
+  ```
+
+- 图示:
+
+<img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220319220404.png" alt="image-20220319220404509" style="zoom:50%;" />
 
 
 

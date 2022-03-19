@@ -13,8 +13,8 @@ public class RandomArrayUtils {
     private static int[] array;
 
     public static int[] randomArray(){
-        array = new int[80000];
-        for (int i = 0; i < 80000; i++) {
+        array = new int[80000000];
+        for (int i = 0; i < 80000000; i++) {
             array[i] = (int)(Math.random()*8000000);
         }
         return array;
