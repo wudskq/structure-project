@@ -1963,6 +1963,49 @@ public static int[] selectSort(int[] array) {
 
 <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220319220404.png" alt="image-20220319220404509" style="zoom:50%;" />
 
+#### 5.1.3 希尔排序(交换法)
+
+- 基本思想:通过不断把原始数据分组,对分组后的数据进行排序,直到不能分组为
+
+  希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法便终止
+
+- 图示:
+
+![iShot2022-03-19 23.58.37](https://gitee.com/wudskq/cloud_img/raw/master/data/20220319235853.jpg)
+
+- 核心代码:
+
+  ```java
+  //希尔排序-交换排序
+  public static void shellSort1(int[] array) {
+    //对分组步长不断更新
+    for (int step = array.length / 2; step > 0; step /= 2) {
+      //对数据设置步长,进行分组
+      //分组的下标位置
+      for (int groupIndex = step; groupIndex < array.length; groupIndex++) {
+        //对根据步长分组的每组数据进行交换排序
+        for (int k = groupIndex - step; k >= 0; k -= step) {
+          if(array[k] > array[k+step]){
+            int temp = array[k];
+            array[k] = array[k+step];
+            array[k+step] = temp;
+          }
+        }
+      }
+    }
+  }
+  ```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
