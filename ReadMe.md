@@ -89,7 +89,7 @@
 
 - 结构图解
 
-  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220225003819.png" alt="image-20220225003813852" style="zoom:50%;" />
+  <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220225003819.png" alt="image-20220225003813852" style="zoom:50%;" />
 
 - 稀疏数组重点: 稀疏数组最重要的结构是为三列,除过第一行外,第一列存储行坐标,第二列存储列坐标,第三列存储数据
 
@@ -178,7 +178,7 @@
 
 - 数组实现队列示意图
 
-  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220226193356.png" alt="image-20220226193356111" style="zoom: 50%;" />
+  <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220226193356.png" alt="image-20220226193356111" style="zoom: 50%;" />
 
 - 数组实现队列思路(尾插法)
 
@@ -340,7 +340,7 @@
   队头指针在队尾指针的下一位置时，队满。 Q.front == (Q.rear + 1) % MAXSIZE 因为头指针可能又重新从0位置开始，而此时队尾指针是MAXSIZE - 1，所以需要求余。 
   当队头和队尾指针在同一位置时，队空。 Q.front == Q.rear;
 
-  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220228012609.png" alt="image-20220228012609730" style="zoom: 50%;" />
+  <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220228012609.png" alt="image-20220228012609730" style="zoom: 50%;" />
 
 - 判断队列是否为空
 
@@ -399,11 +399,11 @@
 
 - 逻辑结构图
 
-  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220301021749.png" alt="image-20220301021743772" style="zoom:50%;" />
+  <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220301021749.png" alt="image-20220301021743772" style="zoom:50%;" />
 
 - 物理结构图
 
-  ![image-20220301022455258](https://gitee.com/wudskq/cloud_img/raw/master/data/20220301022455.png)
+  ![image-20220301022455258](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220301022455.png)
 
 - 判断链表是否为空
 
@@ -595,7 +595,7 @@
 
 - 图示
 
-<img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220303200816.png" alt="image-20220303200810957" style="zoom: 50%;" />
+<img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220303200816.png" alt="image-20220303200810957" style="zoom: 50%;" />
 
 - 思路解析 [10.1 迭代反转链表]()
 
@@ -667,7 +667,7 @@
 
 - 原理图
 
-  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220306215336.png" alt="image-20220306215330661" style="zoom: 50%;" />
+  <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220306215336.png" alt="image-20220306215330661" style="zoom: 50%;" />
 
 - 链表判空: 
 
@@ -800,7 +800,7 @@
 
   如下图所示：
 
-  ![image-20220307010657477](https://gitee.com/wudskq/cloud_img/raw/master/data/20220307010657.png)
+  ![image-20220307010657477](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220307010657.png)
 
 - 环形链表判空
 
@@ -945,7 +945,7 @@
 
   如下图所示：
 
-  ![image-20220307010657477](https://gitee.com/wudskq/cloud_img/raw/master/data/20220307010657.png)
+  ![image-20220307010657477](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220307010657.png)
 
 - 无头节点添加节点
 
@@ -1079,7 +1079,7 @@
 
 - 图示
 
-  ![image-20220308142648149](https://gitee.com/wudskq/cloud_img/raw/master/data/20220308144123.png)
+  ![image-20220308142648149](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220308144123.png)
 
 ### 3.10 栈(线性数据结构)
 
@@ -1091,9 +1091,9 @@
 
 - 逻辑结构图
 
-  ![image-20220310033306379](https://gitee.com/wudskq/cloud_img/raw/master/data/20220310033312.png)
+  ![image-20220310033306379](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220310033312.png)
 
-  ![image-20220310035334623](https://gitee.com/wudskq/cloud_img/raw/master/data/20220310035334.png)
+  ![image-20220310035334623](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220310035334.png)
 
   - 初始化栈
 
@@ -1248,9 +1248,9 @@
 
 - 图示解析如下: a1-a2-a3-a4-a5-a6-a7
 
-  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220310112943.png" alt="image-20220310112943090" style="zoom: 50%;" />
+  <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220310112943.png" alt="image-20220310112943090" style="zoom: 50%;" />
 
-  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220310113023.png" style="zoom: 55%;" />
+  <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220310113023.png" style="zoom: 55%;" />
 
   - 代码实现
 
@@ -1391,7 +1391,7 @@
 
 - 图示(前缀表达式)
 
-  ![iShot2022-03-10 23.21.40](https://gitee.com/wudskq/cloud_img/raw/master/data/20220310232200.jpg)
+  ![iShot2022-03-10 23.21.40](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220310232200.jpg)
 
 - 中缀表达式激计算机求值
 
@@ -1421,19 +1421,19 @@
 
   - 特点: 中缀表达式，平时我们使用的运算表达式就是中缀表达式，例如1+3*2，中缀表达式的特点就是：**二元运算符总是置于与之相关的两个运算对象之间**
 
-  ![iShot2022-03-10 23.27.45](https://gitee.com/wudskq/cloud_img/raw/master/data/20220310232753.jpg)
+  ![iShot2022-03-10 23.27.45](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220310232753.jpg)
 
 - 图示(后缀表达式)
 
   - 特点: 后缀表达式，后缀表达式的特点就是：每一运算符都置于其运算对象之后，以上面的中缀表达式**1+2\*3**为例子，转为后缀表达式就是**123\*+**
 
-  ![iShot2022-03-10 23.29.59](https://gitee.com/wudskq/cloud_img/raw/master/data/20220310233008.jpg)
+  ![iShot2022-03-10 23.29.59](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220310233008.jpg)
 
 - 后缀表达式计算机求值:
 
   程序从左至右扫描,遇到数据时入堆栈,遇到运算符时,弹出栈顶数据与次栈顶数据,并通过当前运算符进行计算,计算结果push进入堆栈中,重复上述步骤,直到表达式扫描至最右端
 
-  ![iShot2022-03-10 23.39.09](https://gitee.com/wudskq/cloud_img/raw/master/data/20220310233923.jpg)
+  ![iShot2022-03-10 23.39.09](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220310233923.jpg)
 
 #### 3.11.1 逆波兰表达式实现计算器
 
@@ -1449,15 +1449,15 @@
 
   图解:
 
-  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220311170538.png" alt="image-20220311170533493" style="zoom:50%;" />
+  <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220311170538.png" alt="image-20220311170533493" style="zoom:50%;" />
 
-  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220311170559.png" alt="image-20220311170559645" style="zoom:50%;" />
+  <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220311170559.png" alt="image-20220311170559645" style="zoom:50%;" />
 
 <img src="/Users/wudskq/Library/Application Support/typora-user-images/image-20220311170625162.png" alt="image-20220311170625162" style="zoom:50%;" />
 
-<img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220311170658.png" alt="image-20220311170658532" style="zoom:50%;" />
+<img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220311170658.png" alt="image-20220311170658532" style="zoom:50%;" />
 
-<img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220311170713.png" alt="image-20220311170713281" style="zoom:50%;" />
+<img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220311170713.png" alt="image-20220311170713281" style="zoom:50%;" />
 
 #### 3.11.2 中缀表达式转后缀表达式
 
@@ -1484,7 +1484,7 @@
 
   此时栈和输出的情况如下：
 
-  ![image-20220311004042700](https://gitee.com/wudskq/cloud_img/raw/master/data/20220311004042.png) 
+  ![image-20220311004042700](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220311004042.png) 
 
   4）读到“*”，因为栈顶元素"+"优先级比" * " 低，所以将" * "直接压入栈中。
 
@@ -1492,13 +1492,13 @@
 
   此时栈和输出情况如下：
 
-  ![image-20220311004108043](https://gitee.com/wudskq/cloud_img/raw/master/data/20220311004108.png)
+  ![image-20220311004108043](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220311004108.png)
 
   6）读到" + "，因为栈顶元素" * "的优先级比它高，所以弹出" * "并输出， 同理，栈中下一个元素" + "优先级与读到的操作符" + "一样，所以也要弹出并输出。然后再将读到的" + "压入栈中。
 
   此时栈和输出情况如下：
 
-  ![image-20220311004129472](https://gitee.com/wudskq/cloud_img/raw/master/data/20220311004129.png)
+  ![image-20220311004129472](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220311004129.png)
 
   7）下一个读到的为"("，它优先级最高，所以直接放入到栈中。
 
@@ -1506,7 +1506,7 @@
 
   此时栈和输出情况如下：
 
-  ![image-20220311004141568](https://gitee.com/wudskq/cloud_img/raw/master/data/20220311004141.png) 
+  ![image-20220311004141568](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220311004141.png) 
 
   9）读到" * "，由于只有遇到" ) "的时候左括号"("才会弹出，所以" * "直接压入栈中。
 
@@ -1514,7 +1514,7 @@
 
   此时栈和输出情况如下：
 
-  ![image-20220311004159602](https://gitee.com/wudskq/cloud_img/raw/master/data/20220311004159.png)
+  ![image-20220311004159602](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220311004159.png)
 
   11）读到" + "，弹出" * "并输出，然后将"+"压入栈中。
 
@@ -1522,19 +1522,19 @@
 
   此时栈和输出情况：
 
-  ![image-20220311004214100](https://gitee.com/wudskq/cloud_img/raw/master/data/20220311004214.png)
+  ![image-20220311004214100](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220311004214.png)
 
   13）接下来读到“）”，则直接将栈中元素弹出并输出直到遇到"("为止。这里右括号前只有一个操作符"+"被弹出并输出。
 
-  ![image-20220311004228740](https://gitee.com/wudskq/cloud_img/raw/master/data/20220311004228.png)
+  ![image-20220311004228740](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220311004228.png)
 
   14）读到" * "，压入栈中。读到g，直接输出。
 
-  ![image-20220311004240318](https://gitee.com/wudskq/cloud_img/raw/master/data/20220311004240.png)
+  ![image-20220311004240318](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220311004240.png)
 
   15）此时输入数据已经读到末尾，栈中还有两个操作符“*”和" + "，直接弹出并输出。
 
-  ![image-20220311004249633](https://gitee.com/wudskq/cloud_img/raw/master/data/20220311004249.png)
+  ![image-20220311004249633](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220311004249.png)
 
   至此整个转换过程完成
 
@@ -1550,7 +1550,7 @@
 
 - 规则:
 
-  ![iShot2022-03-13 15.03.05](https://gitee.com/wudskq/cloud_img/raw/master/data/20220313150318.jpg)
+  ![iShot2022-03-13 15.03.05](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220313150318.jpg)
 
 - 简单代码示例
 
@@ -1570,11 +1570,11 @@
 
 - 运行内存结构图
 
-  ![image-20220313145759127](https://gitee.com/wudskq/cloud_img/raw/master/data/20220313145804.png)
+  ![image-20220313145759127](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220313145804.png)
 
 ### 3.11.1递归经典问题
 
-![iShot2022-03-13 15.04.56](https://gitee.com/wudskq/cloud_img/raw/master/data/20220313150507.jpg)
+![iShot2022-03-13 15.04.56](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220313150507.jpg)
 
 #### 3.11.2 迷宫回溯问题:
 
@@ -1702,7 +1702,7 @@
 
 - 图示:
 
-  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220313190530.jpg" alt="iShot2022-03-13 19.05.22" style="zoom:50%;" />
+  <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220313190530.jpg" alt="iShot2022-03-13 19.05.22" style="zoom:50%;" />
 
 - 核心思想:
 
@@ -1810,7 +1810,7 @@
 
 #### 5.0.0  排序算法分类
 
-<img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220315102748.png" alt="image-20220315102742899" style="zoom: 50%;" />
+<img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220315102748.png" alt="image-20220315102742899" style="zoom: 50%;" />
 
 排序也称为排序算法,排序是将指定的数据,依照一定的规则进行排列的过程
 
@@ -1852,7 +1852,7 @@
 
 　　　　(1)要排序数组:[10,1,35,61,89,36,55]
 
-![image-20220315165330592](https://gitee.com/wudskq/cloud_img/raw/master/data/20220315165330.png)
+![image-20220315165330592](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220315165330.png)
 
 4.代码实例:
 
@@ -1895,7 +1895,7 @@ public class BubbleSort{
 
 - 图示:
 
-  <img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220317021130.jpg" alt="iShot2022-03-17 02.11.14" style="zoom:50%;" />
+  <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220317021130.jpg" alt="iShot2022-03-17 02.11.14" style="zoom:50%;" />
 
 - 实例代码:
 
@@ -1961,7 +1961,7 @@ public static int[] selectSort(int[] array) {
 
 - 图示:
 
-<img src="https://gitee.com/wudskq/cloud_img/raw/master/data/20220319220404.png" alt="image-20220319220404509" style="zoom:50%;" />
+<img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220319220404.png" alt="image-20220319220404509" style="zoom:50%;" />
 
 #### 5.1.3 希尔排序
 
@@ -1971,7 +1971,7 @@ public static int[] selectSort(int[] array) {
 
 - 图示:
 
-![iShot2022-03-19 23.58.37](https://gitee.com/wudskq/cloud_img/raw/master/data/20220319235853.jpg)
+![iShot2022-03-19 23.58.37](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220319235853.jpg)
 
 - 核心代码:
 
@@ -2032,7 +2032,7 @@ public static int[] selectSort(int[] array) {
 
 
 
-![迭代反转链表的初始状态](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304002838.gif)
+![迭代反转链表的初始状态](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220304002838.gif)
 
 ​                                                                        图 3 迭代反转链表的初始状态
 
@@ -2043,7 +2043,7 @@ public static int[] selectSort(int[] array) {
 
 
 
-![迭代反转链表过程一](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304002846.gif)
+![迭代反转链表过程一](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220304002846.gif)
 
 ​                                                                           图 4 迭代反转链表过程一
 
@@ -2052,7 +2052,7 @@ public static int[] selectSort(int[] array) {
 
 
 
-![迭代反转链表过程二](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304002850.gif)
+![迭代反转链表过程二](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220304002850.gif)
 																	图 5 迭代反转链表过程二
 
 
@@ -2060,7 +2060,7 @@ public static int[] selectSort(int[] array) {
 
 
 
-![迭代反转链表过程三](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304002853.gif)
+![迭代反转链表过程三](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220304002853.gif)
 																	图 6 迭代反转链表过程三
 
 
@@ -2068,7 +2068,7 @@ public static int[] selectSort(int[] array) {
 
 
 
-![迭代反转链表过程四](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304002801.gif)
+![迭代反转链表过程四](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220304002801.gif)
 																		图 7 迭代反转链表过程四
 
 > 注意，这里只需改变 mid 所指节点的指向即可，不用修改 3 个指针的指向。
@@ -2114,28 +2114,28 @@ link * iteration_reverse(link* head) {
 \1) 初始状态下，令 beg 指向第一个节点，end 指向 beg->next，如图 16 所示：
 
 
-![就地反转链表的初始状态](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304014829.gif)
+![就地反转链表的初始状态](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220304014829.gif)
 图 16 就地反转链表的初始状态
 
 
 \2) 将 end 所指节点 2 从链表上摘除，然后再添加至当前链表的头部。如图 17 所示：
 
 
-![反转节点2](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304014826.gif)
+![反转节点2](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220304014826.gif)
 图 17 反转节点 2
 
 
 \3) 将 end 指向 beg->next，然后将 end 所指节点 3 从链表摘除，再添加到当前链表的头部，如图 18 所示：
 
 
-![反转节点3](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304014824.gif)
+![反转节点3](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220304014824.gif)
 图 18 反转节点 3
 
 
 \4) 将 end 指向 beg->next，再将 end 所示节点 4 从链表摘除，并添加到当前链表的头部，如图 19 所示：
 
 
-![反转节点 4](https://gitee.com/wudskq/cloud_img/raw/master/data/20220304014821.gif)
+![反转节点 4](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220304014821.gif)
 图 19 反转节点 4
 
 
