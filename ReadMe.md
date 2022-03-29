@@ -2006,6 +2006,33 @@ public static int[] selectSort(int[] array) {
 
 #### 5.1.0 线性查找分析和实现
 
+- 查找算法分类:
+  - 顺序查找(线性查找)
+  - 二分查找(折半查找)
+  - 插值查找
+  - 斐波那契查找
+
+##### 5.1.1 顺序查找
+
+- 概念: 顺序查找是逐一对数据进行查找,发现满足条件的值就返回
+
+- 核心代码:
+
+  ```java
+  private int lineSerach(int[] arrays,int data){
+    for (int i = 0; i < arrays.length; i++) {
+      if(data == arrays[i]){
+        return i;
+      }
+    }
+    return -1;
+  }
+  ```
+
+  
+
+
+
 
 
 
