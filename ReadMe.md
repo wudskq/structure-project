@@ -2029,21 +2029,53 @@ public static int[] selectSort(int[] array) {
   }
   ```
 
+##### 5.1.2 二分查找
+
+- 二分查找必须在有序数据下进行!
+
+- 二分查找算法实现思路:
+
+  - 创建三个指针: left, middle, right 初始化left指针等于0,right指针等于nuts.lenght-1,middle = (left+right)/2;
+
+  - 算法开始时,首先从nums[middle]位置开始找,如果要查找的值大于nums[middle]的值,
+
+    则证明查找的值可能在下标为right的右边
+
+    即left = middle +1,middle = (left+ right)/2
+
+  - 反之,如果要查找的值小于nums[Middle]的值,则证明要查找的值在下标Left的左边()
+
+    即 right =middle-1  middle = (left + right)/2
+
+  - 如果nums[middle] = findValue 则直接返回下标Index
+
+  - 核心代码:
+
+    ```java
+    public int binarySearch1(int[] arrays, int left,int right,int findValue){
+      //进行排序
+      Arrays.sort(arrays);
+      //递归结束条件
+      //如果左下标大于了右下标||右下标小于左下标则证明找不到数据
+      if(left > right){
+        return -1;
+      }
+      int middle = (left + right) /2;
+      int middleData = arrays[middle];
+      //向右递归
+      if(findValue > middleData){
+        return binarySearch1(arrays,middle+1,right,findValue);
+      }else if(findValue < middleData){ //向左递归
+        return binarySearch1(arrays,left,middle-1,findValue);
+      }else{ //直接返回
+        return middle;
+      }
+    }
+    ```
+
+    
+
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
