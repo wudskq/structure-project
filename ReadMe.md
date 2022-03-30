@@ -2176,7 +2176,68 @@ public static int[] selectSort(int[] array) {
   }
   ```
 
+
+##### 5.1.4 斐波那契查找
+
+- 斐波那契查找算法(黄金分割法)
+
+- 黄金分割法: 把一条线段分割为两部分,使其一部分与全长之比等于另一部分与全长之比,取其前三位近似值等于0.618
+
+- 斐波那契数列: 从Index = 1开始,第k个数等于 k-1+k-2 即 arrays[k] = arrays[k-1] + arrays[k-2]
+
+  ```java
+  int[] arrays= {1,1,2,3,5,8,13,21,34}
+  ```
+
+- 核心思想: 斐波那契查找算法与二分法及插值查找算法基本思路相同,唯一不同的点在于middle指针计算公式不同,
+
+  二分查找middle计算公式为middle = (left+right)/2 = left + $ \left(\frac{1}{2}\right) $(right-left) = left + 0.5* (right-left);
+
+  插值算法middle自适应实现思路 middle = left +$ \left(\frac{key-nuns[left]}{nums[right]-nums[left]}\right) $ * (right-left);
+
+  斐波那契middle指针公式为 middle = left + (right-left) * 0.618;
+
+- 核心代码:
+
+  ```java
+  //斐波那契查找
+  public int fibonacciSearch(int[] arrays,int left,int right,int findValue){
+    if(left > right){
+      return -1;
+    }
+    int middle = (int) (left + (right-left)*0.618);
+    int middleData = arrays[middle];
+    if(findValue > middleData){
+      return fibonacciSearch(arrays,middle+1,right,findValue);
+    }else if(findValue < middleData){
+      return fibonacciSearch(arrays,left,middle-1,findValue);
+    }else {
+      return middle;
+    }
+  }
+  ```
+
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
