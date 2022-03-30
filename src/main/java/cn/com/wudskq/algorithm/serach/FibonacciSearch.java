@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author chenfangchao
  * @title: FibonacciSerach
  * @projectName structure-project
- * @description: TODO 斐波那契查找
+ * @description: TODO 斐波那契查找算法
  * @date 2022/3/31 12:34 AM
  */
 public class FibonacciSearch {
