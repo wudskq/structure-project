@@ -2136,9 +2136,79 @@ public static int[] selectSort(int[] array) {
       }
       ```
 
-      
+
+##### 5.1.3 插值查找
+
+- 概念: 插值查找算法与二分查找算法相似,不同的是二分查找每次的middle指针为(left+right)/2,**而插值查找算法的middle指针为自适应指针**
+
+- 自适应指针实现思路:  key为我们的findVlaue
+
+  二分查找middle计算公式为middle = (left+right)/2 = left + $ \left(\frac{1}{2}\right) $(right-left)
+
+  插值算法middle自适应实现思路 middle = left +$ \left(\frac{key-nuns[left]}{nums[right]-nums[left]}\right) $ * (right-left);
+
+  ```java
+  int middle = left + (key-nums[left]/nums[right]-nums[left]) * (right-left)
+  ```
+
+- 核心思想: 插值查找与二分查找思路相同,唯一不同的点在于确定middle的值定义公式
+
+- 核心代码:
+
+  ```java
+  public int interpolationSearch(int[] arrays,int left,int right,int findValue){
+    count = count+1;
+    Arrays.sort(arrays);
+    if(left > right || findValue < arrays[0] || findValue > arrays[arrays.length-1]){
+      return -1;
+    }
+    //插值算法公式
+    int middle = left + (findValue-arrays[left])/(arrays[right]-arrays[left]) * (right-left);
+    int middleData = arrays[middle];
+    //向右找
+    if(findValue > middleData){
+      return interpolationSearch(arrays,middle+1,right,findValue);
+    }else if(findValue < middleData){//向左找
+      return interpolationSearch(arrays,left,middle-1,findValue);
+    }else {
+      return middle;
+    }
+  }
+  ```
 
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### 10.引用
 

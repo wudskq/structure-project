@@ -14,12 +14,14 @@ import java.util.List;
  */
 public class BinarySearch {
 
-    static int[] arrays = {1,2,4,6,8,5,9,10,10,43,554,65};
+    static int[] arrays =  {1,2,4,3,7,6,8,5,9,10,11,12,13,14};
+
+    static int count = 0;
 
     public static void main(String[] args) {
         BinarySearch binarySearch = new BinarySearch();
         System.out.println(binarySearch.binarySearch(arrays, 0, arrays.length - 1, 10));
-
+        System.out.println("二分查找被调用" + count);
     }
 
 
@@ -33,6 +35,7 @@ public class BinarySearch {
      * @return
      */
     public List<Integer> binarySearch(int[] arrays, int left, int right, int findValue){
+        count = count + 1;
         //数据
         ArrayList<Integer> list = new ArrayList<>();
         //进行排序
