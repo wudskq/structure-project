@@ -20,7 +20,7 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         BinarySearch binarySearch = new BinarySearch();
-        System.out.println(binarySearch.binarySearch(arrays, 0, arrays.length - 1, 10));
+        System.out.println(binarySearch.binarySearch2(arrays, 0, arrays.length - 1, 10));
         System.out.println("二分查找被调用" + count);
     }
 
@@ -34,6 +34,7 @@ public class BinarySearch {
      * @param findValue
      * @return
      */
+    //TODO 公式: mid = 0.5*(left+right)
     public List<Integer> binarySearch(int[] arrays, int left, int right, int findValue){
         count = count + 1;
         //数据
@@ -76,6 +77,8 @@ public class BinarySearch {
         return list;
     }
 
+
+    //TODO 公式: mid = 0.5*(left+right)
     public int binarySearch1(int[] arrays, int left,int right,int findValue){
         //进行排序
         Arrays.sort(arrays);
@@ -89,6 +92,27 @@ public class BinarySearch {
         //向右递归
         if(findValue > middleData){
            return binarySearch1(arrays,middle+1,right,findValue);
+        }else if(findValue < middleData){ //向左递归
+            return binarySearch1(arrays,left,middle-1,findValue);
+        }else{ //直接返回
+            return middle;
+        }
+    }
+
+    //TODO 公式: mid = left + 0.5*(right-left)
+    public int binarySearch2(int[] arrays, int left,int right,int findValue){
+        //进行排序
+        Arrays.sort(arrays);
+        //递归结束条件
+        //如果左下标大于了右下标||右下标小于左下标则证明找不到数据
+        if(left > right){
+            return -1;
+        }
+        int middle = (int) (left + 0.5 *(right -left));
+        int middleData = arrays[middle];
+        //向右递归
+        if(findValue > middleData){
+            return binarySearch1(arrays,middle+1,right,findValue);
         }else if(findValue < middleData){ //向左递归
             return binarySearch1(arrays,left,middle-1,findValue);
         }else{ //直接返回
