@@ -5,12 +5,12 @@ package cn.com.wudskq.datastructure.linkedlist;
  * @author chenfangchao
  * @version 1.0.0
  * @ClassName SingelLinkedList.java
- * @Description TODO 单向链表
+ * @Description TODO 单向链表 带head节点
  * @createTime 2022年03月01日 01:46:00
  */
 
 @SuppressWarnings("ALL")
-public class SingelLinkedList {
+public class SingeHeadlLinkedList {
 
     //初始化Head节点
     private SingleNode headNode = new SingleNode(-1,"headNode");
@@ -22,13 +22,13 @@ public class SingelLinkedList {
 
 
     public static void main(String[] args) {
-        SingelLinkedList linkedList = new SingelLinkedList();
+        SingeHeadlLinkedList linkedList = new SingeHeadlLinkedList();
         linkedList.addSingeNode(new SingleNode(0,"sdasda"));
         linkedList.addSingeNode(new SingleNode(1,"1"));
         linkedList.addSingeNode(new SingleNode(2,"dasds"));
         linkedList.delSingelNode(1);
         linkedList.updateSingelNode(new SingleNode(2,"222"));
-        SingelLinkedList linkedList1 = linkedList;
+        SingeHeadlLinkedList linkedList1 = linkedList;
     }
 
 

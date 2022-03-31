@@ -1,6 +1,6 @@
 package cn.com.wudskq.datastructure.linkedlist.question;
 
-import cn.com.wudskq.datastructure.linkedlist.SingelLinkedList;
+import cn.com.wudskq.datastructure.linkedlist.SingeHeadlLinkedList;
 import cn.com.wudskq.datastructure.linkedlist.SingleNode;
 
 /**
@@ -14,7 +14,7 @@ public class SingelLinkedListQuestions {
 
 
     public static void main(String[] args) {
-        SingelLinkedList linkedList = new SingelLinkedList();
+        SingeHeadlLinkedList linkedList = new SingeHeadlLinkedList();
         linkedList.addSingeNode(new SingleNode(0,"0"));
         linkedList.addSingeNode(new SingleNode(1,"1"));
         linkedList.addSingeNode(new SingleNode(2,"2"));
