@@ -94,8 +94,11 @@ public class SingleLinkedList {
             }
             //删除节点的上一个节点指向删除节点的下下节点
             temp.setNext(temp.getNext().getNext());
-            //删除节点next置空
-            temp.getNext().setNext(null);
+            //避免链表最后节点next置空
+            if(null != temp.getNext()){
+                //删除节点next置空
+                temp.getNext().setNext(null);
+            }
         }
     }
 
