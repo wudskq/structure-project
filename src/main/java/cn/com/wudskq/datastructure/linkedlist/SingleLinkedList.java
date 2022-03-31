@@ -37,7 +37,7 @@ public class SingleLinkedList {
         System.out.println();
         
         //删除链表
-        linkedList.del(1);
+        linkedList.del(0);
         //遍历链表
         linkedList.list();
 
@@ -76,22 +76,27 @@ public class SingleLinkedList {
     //移除数据
     public void del(int index){
         isEmpty();
-        SingleNode temp = head;
-        while (true){
-            //等于即找到最后
-            if(null == temp.getNext()){
-                break;
+        //判断删除的节点是否为第一个节点
+        if(head.getIndex() == index){
+            head = head.getNext();
+        }else {
+            SingleNode temp = head;
+            while (true){
+                //等于即找到最后
+                if(null == temp.getNext()){
+                    throw new RuntimeException("del node not exist!");
+                }
+                //找到要删除节点的上一个节点
+                if(temp.getNext().getIndex() == index){
+                    break;
+                }
+                temp = temp.getNext();
             }
-            //找到要删除节点的上一个节点
-            if(temp.getNext().getIndex() == index){
-                break;
-            }
-            temp = temp.getNext();
+            //删除节点的上一个节点指向删除节点的下下节点
+            temp.setNext(temp.getNext().getNext());
+            //删除节点next置空
+            temp.getNext().setNext(null);
         }
-        //删除节点的上一个节点指向删除节点的下下节点
-        temp.setNext(temp.getNext().getNext());
-        //删除节点next置空
-        temp.getNext().setNext(null);
     }
 
 
