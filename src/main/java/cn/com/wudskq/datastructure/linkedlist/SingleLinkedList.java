@@ -41,9 +41,11 @@ public class SingleLinkedList {
         //遍历链表
         linkedList.list();
 
+        System.out.println();
+        //查找
+        linkedList.query(2);
+
     }
-
-
 
 
     //链表判空
@@ -109,6 +111,23 @@ public class SingleLinkedList {
             temp = temp.getNext();
         }
         temp.setData(node.getData());
+    }
+
+    public void query(int index){
+        isEmpty();
+        SingleNode temp = head;
+        while (true){
+            //最后
+            if(null == temp.getNext()){
+                break;
+            }
+            //判断
+            if(index == temp.getIndex()){
+                break;
+            }
+            temp = temp.getNext();
+        }
+        System.out.println(temp.toString());
     }
 
 
