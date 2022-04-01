@@ -1820,9 +1820,46 @@
 
   ![image-20220401020136605](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220401020142.png)
 
-  
+
+#### 3.13.0 常用数据结构分析
+
+在内存中存储数据可以使用数组或者链表
+
+数组存储数据特点: 查询快,插入慢,因为数组在插入数据时会进行数组扩容,导致插入效率变低
+
+链表存储数据特点: 查询慢,插入快,
+
+- 数组存储数据内存结构图:
+
+  ![image-20220401230321209](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220401230321.png)
+
+  ​                                                                            **ArrayList底层也是使用数组进行扩容**
+
+  ![image-20220401230530006](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220401230530.png)
+
+- 链表存储数据内存结构图:
+
+  ![image-20220401231748443](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220401231748.png)
+
+  ![image-20220401231835180](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220401231835.png)
+
+  ![image-20220401231931243](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220401231931.png)
+
+- 树内存存储结构图:
+
+  ![image-20220401235625269](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220401235625.png)
 
 
+
+#### 3.14 树🌲结构存储方式分析
+
+##### 3.14.1 树结构基础部分
+
+
+
+
+
+##### 3.14.1 树结构的应用
 
 
 
