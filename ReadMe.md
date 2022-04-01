@@ -1849,15 +1849,25 @@
 
   ![image-20220401235625269](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220401235625.png)
 
-
-
 #### 3.14 树🌲结构存储方式分析
 
 ##### 3.14.1 树结构基础部分
 
+- 树结构内存结构图
 
+  <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220402001458.png" alt="image-20220402001458269" style="zoom:67%;" />
 
-
+- 树的专业术语
+  - 节点
+  - 根节点
+  - 父节点
+  - 子节点
+  - 叶子节点(没有子节点的节点)
+  - 节点权(节点的值)
+  - 路径(从root开始的路线)
+  - 层
+  - 子树节点(子节点开始的树)
+  - 森林树(很多二叉树组成的树)
 
 ##### 3.14.1 树结构的应用
 
