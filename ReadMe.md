@@ -212,13 +212,13 @@
 - 判空
 
   ```java
-    //判断队列是否为空
-      public void isEmpty(){
-          //头部指针与尾部指针相等时,队列位空
-          if(front == rear){
-             throw new RuntimeException("queue is empty!");
-          }
-      }
+  //判断队列是否为空
+  public void isEmpty(){
+    //头部指针与尾部指针相等时,队列位空
+    if(front == rear){
+      throw new RuntimeException("queue is empty!");
+    }
+  }
   ```
 
 - 判满
@@ -1858,6 +1858,7 @@
   <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220402001458.png" alt="image-20220402001458269" style="zoom:67%;" />
 
 - 树的专业术语
+
   - 节点
   - 根节点
   - 父节点
@@ -1869,7 +1870,21 @@
   - 子树节点(子节点开始的树)
   - 森林树(很多二叉树组成的树)
 
-##### 3.14.1 树结构的应用
+- 树的概念:
+
+  - 二叉树: 每个节点有且只能有两个子节点,并且指针分为left与right
+
+    如果二叉树的所有叶子节点都在最后一层,并且节点的总数等于 2的n次方-1,n为层数,把这种二叉树称为满二叉树、
+
+    如果二叉树的所有叶子节点都在最后一层或者倒数第二层,并且最后一层在树的左边,倒数第二层在树的右边,把这种形式的二叉树称为完全二叉树
+
+    ![image-20220402002204448](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220402002204.png)
+
+- 树的遍历:
+  - 前序遍历: 先输出根节点,再遍历左子树与右子树
+  - 中序遍历: 先遍历左子树,再输出根节点,再遍历右子树
+  - 后序遍历: 先遍历左子树,再遍历右子树,再输出根节点
+  - 判断前序中序后序方法: 看根节点输出顺序即可
 
 
 

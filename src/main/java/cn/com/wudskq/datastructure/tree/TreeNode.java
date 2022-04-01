@@ -18,17 +18,17 @@ public class TreeNode implements Serializable {
 
     private Object value;
 
-    private TreeNode left;
+    private TreeNode leftNode;
 
-    private TreeNode right;
+    private TreeNode rightNode;
 
     @Override
     public String toString() {
         return "TreeNode{" +
                 "id=" + id +
                 ", value=" + value +
-                ", left=" + left +
-                ", right=" + right +
+                ", leftNode=" + leftNode +
+                ", rightNode=" + rightNode +
                 '}';
     }
 }
