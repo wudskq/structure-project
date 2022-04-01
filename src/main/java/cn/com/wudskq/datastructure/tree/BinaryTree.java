@@ -1,0 +1,78 @@
+package cn.com.wudskq.datastructure.tree;
+
+import lombok.Data;
+
+import java.io.Serializable;
+
+/**
+ * @author chenfangchao
+ * @title: BinaryTree
+ * @projectName structure-project
+ * @description: TODO 二叉树实现
+ * @date 2022/4/2 12:45 AM
+ */
+@Data
+public class BinaryTree implements Serializable {
+
+    private TreeNode root;
+
+
+    public BinaryTree(){
+        root = new TreeNode(1, "1");
+        TreeNode node1 = new TreeNode(2, "2");
+        TreeNode node2 = new TreeNode(3, "3");
+        TreeNode node3 = new TreeNode(4, "4");
+        TreeNode node4 = new TreeNode(5, "5");
+        root.setLeftNode(node1); root.setRightNode(node2);
+        node2.setLeftNode(node3);node2.setRightNode(node4);
+        /**
+         * 树结构内存图
+         *        1
+         *    2      3
+         *        4    5
+         */
+    }
+
+
+    public static void main(String[] args) {
+        BinaryTree binaryTree = new BinaryTree();
+        //前序遍历
+        binaryTree.preOrder(); //1,2,3,4,5
+        System.out.println();
+        //中序遍历
+        binaryTree.midOrder(); //2,1,4,3,5
+        System.out.println();
+        //后序遍历
+        binaryTree.postOrder();//2,4,3,5,1
+    }
+
+
+
+    //前序遍历
+    public void preOrder(){
+        if(null != root){
+            root.preOrder();
+        }else {
+           throw new RuntimeException("root is empty!");
+        }
+    }
+
+    //中序遍历
+    public void midOrder(){
+        if(null != root){
+            root.midOrder();
+        }else {
+            throw new RuntimeException("root is empty!");
+        }
+    }
+
+    //后序遍历
+    public void postOrder(){
+        if(null != root){
+            root.postOrder();
+        }else {
+            throw new RuntimeException("root is empty!");
+        }
+    }
+
+}
