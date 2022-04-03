@@ -14,15 +14,15 @@ import java.io.Serializable;
 @Data
 public class BinaryTree implements Serializable {
 
-    private TreeNode root;
+    private BinaryTreeNode root;
 
 
     public BinaryTree(){
-        root = new TreeNode(1, "1");
-        TreeNode node1 = new TreeNode(2, "2");
-        TreeNode node2 = new TreeNode(3, "3");
-        TreeNode node3 = new TreeNode(4, "4");
-        TreeNode node4 = new TreeNode(5, "5");
+        root = new BinaryTreeNode(1, "1");
+        BinaryTreeNode node1 = new BinaryTreeNode(2, "2");
+        BinaryTreeNode node2 = new BinaryTreeNode(3, "3");
+        BinaryTreeNode node3 = new BinaryTreeNode(4, "4");
+        BinaryTreeNode node4 = new BinaryTreeNode(5, "5");
         root.setLeftNode(node1); root.setRightNode(node2);
         node2.setLeftNode(node3);node2.setRightNode(node4);
         /**
@@ -91,7 +91,7 @@ public class BinaryTree implements Serializable {
     }
 
     //前序查找
-    public TreeNode preQuery(int index){
+    public BinaryTreeNode preQuery(int index){
         return root.preQuery(index);
     }
 
@@ -105,7 +105,7 @@ public class BinaryTree implements Serializable {
     }
 
     //中序查找
-    public TreeNode midQuery(int index){
+    public BinaryTreeNode midQuery(int index){
         return root.midQuery(index);
     }
 
@@ -119,7 +119,7 @@ public class BinaryTree implements Serializable {
     }
 
     //后序查找
-    public TreeNode postQuery(int index){
+    public BinaryTreeNode postQuery(int index){
         return root.postQuery(index);
     }
 

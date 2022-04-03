@@ -12,18 +12,18 @@ import java.io.Serializable;
  * @date 2022/4/2 12:08 AM
  */
 @Data
-public class TreeNode implements Serializable {
+public class BinaryTreeNode implements Serializable {
 
     private Integer id;
 
     private Object value;
 
-    private TreeNode leftNode;
+    private BinaryTreeNode leftNode;
 
-    private TreeNode rightNode;
+    private BinaryTreeNode rightNode;
 
 
-    public TreeNode(Integer id,Object value){
+    public BinaryTreeNode(Integer id, Object value){
         super();
         this.id = id;
         this.value = value;
@@ -44,8 +44,8 @@ public class TreeNode implements Serializable {
     }
 
     //前序查找
-    public TreeNode preQuery(int index){
-        TreeNode res = null;
+    public BinaryTreeNode preQuery(int index){
+        BinaryTreeNode res = null;
         //根节点查找
         if(this.id == index){
             res = this;
@@ -80,8 +80,8 @@ public class TreeNode implements Serializable {
     }
 
     //中序查找
-    public TreeNode midQuery(int index){
-        TreeNode res = null;
+    public BinaryTreeNode midQuery(int index){
+        BinaryTreeNode res = null;
         //左子树递归查找
         if(null != this.leftNode && this.leftNode.id != index){
             this.leftNode.midQuery(index);
@@ -117,8 +117,8 @@ public class TreeNode implements Serializable {
     }
 
     //后序查找
-    public TreeNode postQuery(int index){
-        TreeNode res = null;
+    public BinaryTreeNode postQuery(int index){
+        BinaryTreeNode res = null;
         //左子树递归查找
         if(null != this.leftNode && this.leftNode.id != index){
             this.leftNode.postQuery(index);
@@ -171,14 +171,14 @@ public class TreeNode implements Serializable {
             //该节点左子节点或者右子节点不为空
             if(this.leftNode.leftNode != null){
                 //获取右叶子节点
-                TreeNode rightNode = this.rightNode.rightNode;
+                BinaryTreeNode rightNode = this.rightNode.rightNode;
                 this.leftNode = this.leftNode.leftNode;
                 //重新链接右叶子节点
                 this.leftNode.rightNode = rightNode;
                 return;
             }else if(this.leftNode.rightNode != null) {
                 //获取左叶子节点
-                TreeNode leftNode = this.rightNode.leftNode;
+                BinaryTreeNode leftNode = this.rightNode.leftNode;
                 this.leftNode = this.leftNode.rightNode;
                 //重新链接左叶子节点
                 this.rightNode.leftNode = leftNode;
