@@ -38,12 +38,16 @@ public class BinaryTree implements Serializable {
         BinaryTree binaryTree = new BinaryTree();
         //前序遍历
         binaryTree.preOrder(); //1,2,3,4,5
-        System.out.println();
-        //中序遍历
-        binaryTree.midOrder(); //2,1,4,3,5
-        System.out.println();
-        //后序遍历
-        binaryTree.postOrder();//2,4,3,5,1
+//        System.out.println();
+//        //中序遍历
+//        binaryTree.midOrder(); //2,1,4,3,5
+//        System.out.println();
+//        //后序遍历
+//        binaryTree.postOrder();//2,4,3,5,1
+
+        //前序查找
+        System.out.println(binaryTree.preQuery(0));
+     
     }
 
 
@@ -55,6 +59,11 @@ public class BinaryTree implements Serializable {
         }else {
            throw new RuntimeException("root is empty!");
         }
+    }
+
+    //前序查找
+    public TreeNode preQuery(int index){
+        return root.preQuery(index);
     }
 
     //中序遍历

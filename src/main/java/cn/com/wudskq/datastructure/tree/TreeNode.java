@@ -43,6 +43,28 @@ public class TreeNode implements Serializable {
         }
     }
 
+    //前序查找
+    public TreeNode preQuery(int index){
+        TreeNode res = null;
+        //根节点查找
+        if(this.id == index){
+            res = this;
+        }
+        //左子树递归查找
+        if(null != this.leftNode && this.leftNode.id != index){
+            this.leftNode.preQuery(index);
+        }else {
+            res = this.leftNode;
+        }
+        //右子树递归查找
+        if(null != this.rightNode && this.rightNode.id != index){
+            this.rightNode.preQuery(index);
+        }else {
+            res = this.rightNode;
+        }
+        return res;
+    }
+
     //中序遍历
     public void midOrder(){
         //先遍历左子树
@@ -57,6 +79,29 @@ public class TreeNode implements Serializable {
         }
     }
 
+    //中序查找
+    public TreeNode midQuery(int index){
+        TreeNode res = null;
+        //左子树递归查找
+        if(null != this.leftNode && this.leftNode.id != index){
+            this.leftNode.midQuery(index);
+        }else {
+            res = this.leftNode;
+        }
+        //根节点查找
+        if(this.id == index){
+            res = this;
+        }
+        //右子树递归查找
+        if(null != this.rightNode && this.rightNode.id != index){
+            this.rightNode.midQuery(index);
+        }else {
+            res = this.rightNode;
+        }
+        return res;
+    }
+
+
     //后序遍历
     public void postOrder(){
         //先遍历左子树
@@ -70,6 +115,29 @@ public class TreeNode implements Serializable {
         //再输出根节点
         System.out.println(this);
     }
+
+    public TreeNode postQuery(int index){
+        TreeNode res = null;
+        //左子树递归查找
+        if(null != this.leftNode && this.leftNode.id != index){
+            this.leftNode.postQuery(index);
+        }else {
+            res = this.leftNode;
+        }
+        //右子树递归查找
+        if(null != this.rightNode && this.rightNode.id != index){
+            this.rightNode.postQuery(index);
+        }else {
+            res = this.rightNode.postQuery(index);
+        }
+        //根节点查找
+        if(this.id == index){
+            res = this;
+        }
+        return res;
+    }
+
+
 
 
     @Override
