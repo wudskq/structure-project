@@ -1898,6 +1898,81 @@
 
   看根节点输出顺序即可
 
+- 核心代码:
+
+  ```java
+  @Data
+  public class TreeNode implements Serializable {
+  
+    private Integer id;
+  
+    private Object value;
+  
+    private TreeNode leftNode;
+  
+    private TreeNode rightNode;
+  
+    
+    public TreeNode(Integer id,Object value){
+      super();
+      this.id = id;
+      this.value = value;
+    }
+  
+    //前序遍历
+    public void preOrder(){
+      //先输出父节点
+      System.out.println(this);
+      //遍历左子树
+      if(null != this.leftNode){
+        this.leftNode.preOrder();
+      }
+      //遍历右子树
+      if(null != this.rightNode){
+        this.rightNode.preOrder();
+      }
+    }
+  
+  
+    //中序遍历
+    public void midOrder(){
+      //先遍历左子树
+      if(null != this.leftNode){
+        this.leftNode.midOrder();
+      }
+      //再输出根节点
+      System.out.println(this);
+      //再遍历右子树
+      if(null != this.rightNode){
+        this.rightNode.midOrder();
+      }
+    }
+  
+  
+    //后序遍历
+    public void postOrder(){
+      //先遍历左子树
+      if(null != this.leftNode){
+        this.leftNode.midOrder();
+      }
+      //再遍历右子树
+      if(null != this.rightNode){
+        this.rightNode.midOrder();
+      }
+      //再输出根节点
+      System.out.println(this);
+    }
+  
+    @Override
+    public String toString() {
+      return "TreeNode{" +
+        "id=" + id +
+        ", value=" + value +
+        '}';
+    }
+  }
+  ```
+
 ##### 3.4.3 前序中序后序查找树节点
 
 - 前序查找核心思想:
@@ -1924,12 +1999,115 @@
 
   否则判断根节点是否想等
 
+- 核心代码:
+
+  ```java
+  @Data
+  public class TreeNode implements Serializable {
+  
+    private Integer id;
+  
+    private Object value;
+  
+    private TreeNode leftNode;
+  
+    private TreeNode rightNode;
+  
+  
+    public TreeNode(Integer id,Object value){
+      super();
+      this.id = id;
+      this.value = value;
+    }
+  
+  
+    //前序查找
+    public TreeNode preQuery(int index){
+      TreeNode res = null;
+      //根节点查找
+      if(this.id == index){
+        res = this;
+      }
+      //左子树递归查找
+      if(null != this.leftNode && this.leftNode.id != index){
+        this.leftNode.preQuery(index);
+      }else {
+        res = this.leftNode;
+      }
+      //右子树递归查找
+      if(null != this.rightNode && this.rightNode.id != index){
+        this.rightNode.preQuery(index);
+      }else {
+        res = this.rightNode;
+      }
+      return res;
+    }
+  
+    //中序查找
+    public TreeNode midQuery(int index){
+      TreeNode res = null;
+      //左子树递归查找
+      if(null != this.leftNode && this.leftNode.id != index){
+        this.leftNode.midQuery(index);
+      }else {
+        res = this.leftNode;
+      }
+      //根节点查找
+      if(this.id == index){
+        res = this;
+      }
+      //右子树递归查找
+      if(null != this.rightNode && this.rightNode.id != index){
+        this.rightNode.midQuery(index);
+      }else {
+        res = this.rightNode;
+      }
+      return res;
+    }
+  
+  
+    public TreeNode postQuery(int index){
+      TreeNode res = null;
+      //左子树递归查找
+      if(null != this.leftNode && this.leftNode.id != index){
+        this.leftNode.postQuery(index);
+      }else {
+        res = this.leftNode;
+      }
+      //右子树递归查找
+      if(null != this.rightNode && this.rightNode.id != index){
+        this.rightNode.postQuery(index);
+      }else {
+        res = this.rightNode;
+      }
+      //根节点查找
+      if(this.id == index){
+        res = this;
+      }
+      return res;
+    }
+    @Override
+    public String toString() {
+      return "TreeNode{" +
+        "id=" + id +
+        ", value=" + value +
+        '}';
+    }
+  }
+  ```
+
+  
+
+
+
 ### 4. 时间复杂度
 
 1. 时间频度: 一个算法执行的时间与该算法中的语句执行的频度有关,算法中语句执行频度越高,该算法花费的时间就越多
 2. 一个算法中语句执行的频度称为语句频度或时间频度T(n)
 
-#### 
+
+
+
 
 ### 5. 算法
 

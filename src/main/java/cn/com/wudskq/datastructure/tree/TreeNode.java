@@ -128,7 +128,7 @@ public class TreeNode implements Serializable {
         if(null != this.rightNode && this.rightNode.id != index){
             this.rightNode.postQuery(index);
         }else {
-            res = this.rightNode.postQuery(index);
+            res = this.rightNode;
         }
         //根节点查找
         if(this.id == index){
