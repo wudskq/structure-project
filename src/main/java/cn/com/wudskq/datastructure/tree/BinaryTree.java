@@ -60,6 +60,23 @@ public class BinaryTree implements Serializable {
         System.out.println(binaryTree.postQuery(3));
         System.out.println("后序查找完成----");
 
+        //删除
+        binaryTree.remove(1);
+        System.out.println("删除完成----");
+
+        //前序遍历
+        binaryTree.preOrder(); //1,2,3,4,5
+        System.out.println("前序遍历完成----");
+
+        //中序遍历
+        binaryTree.midOrder(); //2,1,4,3,5
+        System.out.println("中序遍历完成----");
+
+        //后序遍历
+        binaryTree.postOrder();//2,4,3,5,1
+        System.out.println("后序遍历完成----");
+
+
     }
 
 
@@ -104,6 +121,17 @@ public class BinaryTree implements Serializable {
     //后序查找
     public TreeNode postQuery(int index){
         return root.postQuery(index);
+    }
+
+
+    //删除节点
+    public void  remove(int index){
+        //只有根节点情况
+        if(null == root.getLeftNode() && null == root.getRightNode()){
+            root = null;
+        }else {
+            root.remove(index);
+        }
     }
 
 }
