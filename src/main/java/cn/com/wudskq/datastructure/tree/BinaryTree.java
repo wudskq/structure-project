@@ -61,7 +61,7 @@ public class BinaryTree implements Serializable {
         System.out.println("后序查找完成----");
 
         //删除
-        binaryTree.remove(1);
+        binaryTree.remove1(5);
         System.out.println("删除完成----");
 
         //前序遍历
@@ -131,6 +131,16 @@ public class BinaryTree implements Serializable {
             root = null;
         }else {
             root.remove(index);
+        }
+    }
+
+    //删除节点
+    public void  remove1(int index){
+        //只有根节点情况
+        if(null == root.getLeftNode() && null == root.getRightNode()){
+            root = null;
+        }else {
+            root.remove1(index);
         }
     }
 

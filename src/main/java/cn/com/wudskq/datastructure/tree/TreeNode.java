@@ -138,6 +138,7 @@ public class TreeNode implements Serializable {
         return res;
     }
 
+    //约定: 如果是叶子节点直接删除 如果是非叶子节点直接删除该非叶子节点的子树(包含该节点本身)
     //删除
     public void remove(int index){
         //左子节点不为空
@@ -154,6 +155,43 @@ public class TreeNode implements Serializable {
         if(null != this.leftNode){
             this.leftNode.remove(index);
 
+        }
+        //右子树
+        if(null != this.rightNode){
+            this.rightNode.remove(index);
+        }
+    }
+
+    //约定: 如果是叶子节点直接删除
+    //如果是非叶子节点不能删除该非叶子节点的子树,只单独删除该节点,并且左叶子节点上一到删除节点位置,
+    //删除
+    public void remove1(int index){
+        //左子节点不为空
+        if(null != this.leftNode && this.leftNode.id == index){
+            //该节点左子节点或者右子节点不为空
+            if(this.leftNode.leftNode != null){
+                //获取右叶子节点
+                TreeNode rightNode = this.rightNode.rightNode;
+                this.leftNode = this.leftNode.leftNode;
+                //重新链接右叶子节点
+                this.leftNode.rightNode = rightNode;
+                return;
+            }else if(this.leftNode.rightNode != null) {
+                //获取左叶子节点
+                TreeNode leftNode = this.rightNode.leftNode;
+                this.leftNode = this.leftNode.rightNode;
+                //重新链接左叶子节点
+                this.rightNode.leftNode = leftNode;
+                return;
+            }
+        }
+        //右子节点不为空
+        if(null != this.rightNode && this.rightNode.id == index){
+
+        }
+        //左子树
+        if(null != this.leftNode){
+            this.leftNode.remove(index);
         }
         //右子树
         if(null != this.rightNode){
