@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author chenfangchao
  * @title: TreeNode
  * @projectName structure-project
- * @description: TODO 节点对象
+ * @description: TODO 树节点对象
  * @date 2022/4/2 12:08 AM
  */
 @Data
@@ -116,6 +116,7 @@ public class TreeNode implements Serializable {
         System.out.println(this);
     }
 
+    //后序查找
     public TreeNode postQuery(int index){
         TreeNode res = null;
         //左子树递归查找
@@ -137,6 +138,28 @@ public class TreeNode implements Serializable {
         return res;
     }
 
+    //删除
+    public void remove(int index){
+        //左子节点不为空
+        if(null != this.leftNode && this.leftNode.id == index){
+            this.leftNode = null;
+            return;
+        }
+        //右子节点不为空
+        if(null != this.rightNode && this.rightNode.id == index){
+            this.rightNode = null;
+            return;
+        }
+        //左子树
+        if(null != this.leftNode){
+            this.leftNode.remove(index);
+
+        }
+        //右子树
+        if(null != this.rightNode){
+            this.rightNode.remove(index);
+        }
+    }
 
 
 
