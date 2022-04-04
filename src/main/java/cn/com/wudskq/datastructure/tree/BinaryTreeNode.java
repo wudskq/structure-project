@@ -1,5 +1,6 @@
 package cn.com.wudskq.datastructure.tree;
 
+import cn.hutool.core.lang.tree.TreeNode;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -187,7 +188,22 @@ public class BinaryTreeNode implements Serializable {
         }
         //右子节点不为空
         if(null != this.rightNode && this.rightNode.id == index){
-
+            //该节点左子节点或者右子节点不为空
+            if(this.rightNode.leftNode != null){
+                //获取右叶子节点
+                BinaryTreeNode rightNode = this.rightNode.rightNode;
+                this.rightNode = this.rightNode.leftNode;
+                //重新链接右叶子节点
+                this.rightNode.rightNode = rightNode;
+                return;
+            }else if(this.rightNode.rightNode != null) {
+                //获取左叶子节点
+                BinaryTreeNode leftNode = this.rightNode.leftNode;
+                this.rightNode = this.rightNode.rightNode;
+                //重新链接左叶子节点
+                this.rightNode.leftNode = leftNode;
+                return;
+            }
         }
         //左子树
         if(null != this.leftNode){
