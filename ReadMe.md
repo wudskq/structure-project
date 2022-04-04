@@ -2112,35 +2112,75 @@
 
   <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220404021304.png" alt="image-20220404021303599" style="zoom: 50%;" />
 
-  
-
 #### 3.15 顺序存储二叉树🌲
 
+- 基本说明: 从数据存储层面,数组可以转换为树,树也可以转换为数组
 
+- 顺序二叉树特性:
 
+  - 第N个元素的左子节点为 2*N+1
+  - 第N个元素的右子节点为 2*N+2
+  - 第N个元素的父节点为 (N-1)/2
+  - N指二叉树的第几个元素
 
+  <img src="https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220405050445.png" alt="image-20220405050445418" style="zoom: 50%;" />
 
+- 核心代码:
 
+  ```java
+  
+  //顺序存储二叉树-前序遍历
+  public void preOrder(int index){
+    if(null == array || array.length ==0){
+      logger.error("array is empty!");
+    }
+    System.out.println(array[index]);
+    //向左递归遍历
+    if((2 * index + 1) < array.length){
+      preOrder(2 * index +1);
+    }
+    //向右递归遍历
+    if((2 * index +2) < array.length){
+      preOrder(2 * index +2);
+    }
+  }
+  
+  
+  //顺序存储二叉树-中序遍历
+  public void midOrder(int index){
+    if(null == array || array.length ==0){
+      logger.error("array is empty!");
+    }
+    //向左递归遍历
+    if((2 * index + 1) < array.length){
+      preOrder(2 * index +1);
+    }
+    System.out.println(array[index]);
+    //向右递归遍历
+    if((2 * index +2) < array.length){
+      preOrder(2 * index +2);
+    }
+  }
+  
+  //顺序存储二叉树-后序遍历
+  public void postOrder(int index){
+    if(null == array || array.length ==0){
+      logger.error("array is empty!");
+    }
+    //向左递归遍历
+    if((2 * index + 1) < array.length){
+      preOrder(2 * index +1);
+    }
+    //向右递归遍历
+    if((2 * index +2) < array.length){
+      preOrder(2 * index +2);
+    }
+    System.out.println(array[index]);
+  }
+  
+  ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 
 
 
@@ -2561,13 +2601,6 @@ public static int[] selectSort(int[] array) {
     }
   }
   ```
-
-  
-
-
-
-
-
 
 
 ### 10.引用
