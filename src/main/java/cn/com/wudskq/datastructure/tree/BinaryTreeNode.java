@@ -1,6 +1,5 @@
 package cn.com.wudskq.datastructure.tree;
 
-import cn.hutool.core.lang.tree.TreeNode;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -19,9 +18,17 @@ public class BinaryTreeNode implements Serializable {
 
     private Object value;
 
+    //左指针
     private BinaryTreeNode leftNode;
 
+    //右指针
     private BinaryTreeNode rightNode;
+
+    //左指针类型 0为左子树 1为前驱节点
+    private int leftNodeType;
+
+    //右指针类型 0为右子树 1为后继节点
+    private int rightNodeType;
 
 
     public BinaryTreeNode(Integer id, Object value){
