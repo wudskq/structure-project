@@ -2199,9 +2199,36 @@
 
 ![image-20220408030550491](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220408030550.png)
 
+##### 3.16.2 遍历线索化二叉树图解
 
+![image-20220408032106025](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220408032106.png)
 
+- 核心代码:
 
+  ```java
+  //中序线索化遍历
+  public void threadedList(){
+    //创建辅助变量 存储当前遍历的节点,从root开始
+    BinaryTreeNode node = root;
+    while (null != node){
+      //循环找到leftType=1的节点
+      //后面随着遍历而变化,当leftType=1时,说明该节点是线索化的
+      while (node.getLeftNodeType() == 0){
+        node = node.getLeftNode();
+      }
+      //等于1打印节点
+      System.out.println(node);
+      //如果当前节点的右指针指向后继节点,则一直输出
+      while (node.getRightNodeType() ==1){
+        //获取到当前节点的后继节点
+        node = node.getRightNode();
+        System.out.println(node);
+      }
+      //替换这个遍历的节点
+      node = node.getRightNode();
+    }
+  }
+  ```
 
 ### 4. 时间复杂度
 
