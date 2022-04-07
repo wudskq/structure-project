@@ -2193,6 +2193,12 @@
 
 - 一个节点的后一个节点,称为后继
 
+##### 3.16.1 中序遍历线索化二叉树图解: 左前(左子树)右后(右子树)
+
+![image-20220408015033370](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220408015038.png)
+
+
+
 
 
 
