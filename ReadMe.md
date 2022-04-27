@@ -2250,11 +2250,43 @@
 
 - 概念: 对于二叉排序树,任何一个非叶子节点的左子节点都要比该节点小,右子节点都要比该节点大,如果遇到相同的数则该节点挂在左子节点或者右子节点都可
 
+- 二叉排序树的新增:
 
+  - 核心思想: (约定二叉排序树当前节点的左子节点小于当前节点,右子节点大于或等于当前节点)
 
+  - 利用递归新增的节点是否大于当前节点即可
 
+  - 核心代码:
 
+    ```java
+    //递归添加节点(需要满足二叉排序树约定)
+    public void  add(BinarySortTreeNode node){
+      if(node == null){
+        return;
+      }
+      //添加节点小于当前节点
+      //指针往左边挂
+      if(node.value < this.value){
+        if(this.left == null){
+          this.left = node;
+        }else {
+          this.left.add(node);
+        }
+        //节点大于当前节点 指针往右边挂
+      }else{
+        if(this.right == null){
+          this.right = node;
+        }else {
+          this.right.add(node);
+        }
+      }
+    }
+    ```
 
+- 二叉树的删除(三种情况):
+  - 删除叶子节点
+  - 删除只有一颗子树的节点
+  - 删除有两颗子树的节点
 
 ### 4. 时间复杂度
 
