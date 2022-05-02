@@ -22,6 +22,14 @@ public class AVLTreeNode {
         this.value = value;
     }
 
+    //获取树的高度(左子树与右子树之间较大的树的高度)
+    //以当前节点为根节点的树的高度
+    public int getTreeHeight(){
+        return Math.max(left == null ? 0:left.getTreeHeight() , right==null ? 0: right.getTreeHeight());
+    }
+
+
+
     //递归添加节点(需要满足二叉排序树约定)
     public void  add(AVLTreeNode node){
         if(node == null){
