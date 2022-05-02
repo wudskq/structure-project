@@ -25,7 +25,8 @@ public class AVLTreeNode {
     //获取树的高度(左子树与右子树之间较大的树的高度)
     //以当前节点为根节点的树的高度
     public int getTreeHeight(){
-        return Math.max(left == null ? 0:left.getTreeHeight() , right==null ? 0: right.getTreeHeight());
+        //+1 (当前节点也要计算进去)
+        return Math.max(left == null ? 0:left.getTreeHeight() , right==null ? 0: right.getTreeHeight()) +1 ;
     }
 
 
