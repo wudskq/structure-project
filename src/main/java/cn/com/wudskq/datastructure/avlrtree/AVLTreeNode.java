@@ -1,4 +1,4 @@
-package cn.com.wudskq.datastructure.bsttree;
+package cn.com.wudskq.datastructure.avlrtree;
 
 import lombok.Data;
 
@@ -6,24 +6,24 @@ import lombok.Data;
  * @author chenfangchao
  * @title: BinarySortTreeNode
  * @projectName structure-project
- * @description: TODO 二叉排序树节点
- * @date 2022/4/10 9:16 PM
+ * @description: TODO AVL排序树节点
+ * @date 2022/5/3 3:54 AM
  */
 @Data
-public class BinarySortTreeNode {
+public class AVLTreeNode {
 
     private int value;
 
-    private BinarySortTreeNode left;
+    private AVLTreeNode left;
 
-    private BinarySortTreeNode right;
+    private AVLTreeNode right;
 
-    public BinarySortTreeNode(int value) {
+    public AVLTreeNode(int value) {
         this.value = value;
     }
 
     //递归添加节点(需要满足二叉排序树约定)
-    public void  add(BinarySortTreeNode node){
+    public void  add(AVLTreeNode node){
         if(node == null){
             return;
         }
