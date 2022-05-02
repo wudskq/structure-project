@@ -1,4 +1,4 @@
-package cn.com.wudskq.datastructure.bsttree;
+package cn.com.wudskq.datastructure.binarysorttree;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

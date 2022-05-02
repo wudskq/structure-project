@@ -1,4 +1,4 @@
-package cn.com.wudskq.datastructure.bsttree;
+package cn.com.wudskq.datastructure.binarysorttree;
 
 import lombok.Data;
 
