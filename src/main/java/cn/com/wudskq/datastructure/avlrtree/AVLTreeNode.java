@@ -29,6 +29,21 @@ public class AVLTreeNode {
         return Math.max(left == null ? 0:left.getTreeHeight() , right==null ? 0: right.getTreeHeight()) +1 ;
     }
 
+    //获取左子树高度
+    public int getLeftTreeHeight(){
+        if(null == left){
+            return 0;
+        }
+        return left.getTreeHeight();
+    }
+
+    //获取右子树高度
+    public int getRightTreeHeight(){
+        if(null == right){
+            return 0;
+        }
+        return right.getTreeHeight();
+    }
 
 
     //递归添加节点(需要满足二叉排序树约定)
