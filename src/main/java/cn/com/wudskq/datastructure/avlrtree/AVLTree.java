@@ -17,12 +17,13 @@ public class AVLTree {
 
     private AVLTreeNode root;
 
-    static int[] array = {7,2,10,12,5,1,9};
+    static int[] array = {4,3,6,5,7,8};
     //内存结构图
     /**
-     *        7
-     *    2      10
-     * 1    5  9    12
+     *      4
+     *  3       6
+     *    5       7
+     *              8
      *
      */
 
